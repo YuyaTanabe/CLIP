@@ -10,6 +10,42 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class='nav navbar-nav navbar-left' >
+          <h3 style="margin-top: 13px; margin-bottom: 14px;"><span>CLIP</span></h3>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if admin_signed_in? %>
+              <li class='nav navbar-nav'  style="margin-top: 17px; margin-bottom: 14px;">管理者</li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-block" %></li>
+            <% else %>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <% if notice %>
+      <br>
+      <p class="alert alert-success" style="text-align: center;" ><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <br>
+      <p class="alert alert-danger" style="text-align: center;" ><%= alert %></p>
+    <% end %>
+
+    <div class='body'>
+      <div class='container'>
+        <div class='row'>
+
+          <%= yield %>
+
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>
