@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   attachment :user_image
 
+  has_many :things, dependent: :destroy
+
+
 end

@@ -29,3 +29,19 @@ body {
     margin-top: 50px;
 }
 /** application.css **/
+
+
+
+/** user/show.css **/
+.user_thing {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+
+/* マウスオーバー時のカラー */
+.user_thing:hover {
+    background-color: orange;
+}
+
+

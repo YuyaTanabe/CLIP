@@ -1,0 +1,48 @@
+
+<div class="well well-compact col-md-8 col-md-offset-2" style="margin-top: 80px; border-radius: 20px;">
+  <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
+    <%= @thing.thing_name %>
+  </div>
+  <br>
+  <br>
+
+  <div class="thing_image col-md-5" style="margin-top: 40px; margin-bottom: 30px; padding-left: 40px; text-align: center;">
+    <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
+  </div>
+  <div class="thing_detail col-md-7" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
+
+    <div class="thing_url" style="word-wrap: break-word;">
+      <p style=""><strong>・URL</strong></p>
+      <P><%= text_url_to_link(h(@thing.thing_url)).html_safe %></p>
+    </div>
+    <hr>
+    <div class="thing_memo" style="">
+      <p style=""><strong>・メモ</strong></p>
+      <p class="text-area alert alert-info" style="word-wrap: break-word;">
+        <%= @thing.thing_memo %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<% if current_user.id == @thing.user_id %>
+  <div class="disc_button" style="text-align: center">
+    <div class='col-md-6' style="margin: 30px auto">
+      <%= link_to edit_thing_path(@thing.id), class:"btn-lg btn-success edit_thing_#{@thing.id}", method: :get do %>
+        <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
+      <% end %>
+    </div>
+    <div class='col-md-6' style="margin: 30px auto">
+      <%= link_to thing_path(@thing.id), "data-confirm" => "本当に消しますか?", class:"btn-lg btn-danger delete_thing_#{@thing.id}", method: :delete do %>
+        <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
