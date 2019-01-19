@@ -73,4 +73,13 @@ gem 'devise'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
+# グーグルマップの利用
+gem 'geocoder'
+gem 'gmaps4rails'
+
+# 環境変数設定用
+gem 'dotenv-rails'
+
+
+
 
