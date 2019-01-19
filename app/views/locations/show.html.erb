@@ -1,0 +1,89 @@
+
+<div class="well well-compact col-md-8 col-md-offset-2" style="margin-top: 80px; border-radius: 20px;">
+  <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
+    <strong><%= @location.location_name %></strong>
+  </div>
+  <br>
+  <br>
+  <div class="location_info">
+    <div class="location_image col-md-5" style="margin-top: 40px; margin-bottom: 30px; padding-left: 40px; text-align: center;">
+      <%= attachment_image_tag @location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
+    </div>
+    <div class="location_detail col-md-7" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
+      <div class="location_url" style="word-wrap: break-word;">
+        <p style=""><strong>・URL</strong></p>
+        <P><%= text_url_to_link(h(@location.location_url)).html_safe %></p>
+      </div>
+      <hr>
+      <div class="location_url" style="word-wrap: break-word;">
+        <p style=""><strong>・最寄駅</strong></p>
+        <P><%= @location.station %></p>
+      </div>
+      <hr>
+      <div class="location_memo" style="">
+        <p style=""><strong>・メモ</strong></p>
+        <p class="text-area alert alert-info" style="word-wrap: break-word;">
+          <%= @location.location_memo %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="location_map col-md-12">
+    <!-- <p style=""><strong>・マップ</strong></p> -->
+    <div id="map" style='width: 100%; height: 500px; border-radius: 20px; border: 2px solid #dcdcdc; margin-bottom: 20px;'></div>
+  </div>
+</div>
+
+<% if current_user.id == @location.user_id %>
+  <div class="thing_edit_delete" style="text-align: center">
+    <div class='thing_edit col-md-6' style="margin: 30px auto">
+      <%= link_to edit_location_path(@location.id), class:"btn-lg btn-success", method: :get do %>
+        <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
+      <% end %>
+    </div>
+    <div class='thing_delete col-md-6' style="margin: 30px auto">
+      <%= link_to location_path(@location.id), "data-confirm" => "本当に消しますか?", class:"btn-lg btn-danger", method: :delete do %>
+        <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  function initMap() {
+
+    var test ={lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: test
+    });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = '<%= @location.address %>';
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+        position:test,
+        map: map,
+        title: contentString
+    });
+
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
+  }
+</script>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap">
+</script>
+
+
+
+
+
+

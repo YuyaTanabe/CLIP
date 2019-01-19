@@ -33,6 +33,17 @@ body {
 
 
 /** user/show.css **/
+.user_location {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+
+/* マウスオーバー時のカラー */
+.user_location:hover {
+    background-color: #00bfff;
+}
+
 .user_thing {
     border: 1px solid #dcdcdc;
     background-color: #f5f5f5;

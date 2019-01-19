@@ -1,40 +1,48 @@
 
-<h2 style="color: orange; text-align: center; margin-top: 40px;"><span></span>Object clip</h2>
+<h2 style="color: #00bfff; text-align: center; margin-top: 40px;"><span></span>Location clip</h2>
 <div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 15px;">
-  <%= form_for @thing do |f| %>
+  <%= form_for @location do |f| %>
     <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
       <%= f.label :名前 %>
-      <%= f.text_field :thing_name, class:"form-control" %>
+      <%= f.text_field :location_name, class:"form-control" %>
     </div>
     <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
       <div class="field col-md-7" style="margin-bottom: 0px; padding: 0px;">
         <%= f.label :画像 %>
-        <%= f.attachment_field :thing_image, placeholder: "イメージ画像を選択" %>
+        <%= f.attachment_field :location_image, placeholder: "イメージ画像を選択" %>
       </div>
       <div class="field col-md-5" style="margin-bottom: 0px;">
         ↓↓ <%= f.label :変更前の画像 %> ↓↓
         <div style="margin-bottom: 0px; padding-left: 30px;">
-          <%= attachment_image_tag @thing, :thing_image, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "60x60" %>
+          <%= attachment_image_tag @location, :location_image, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "60x60" %>
         </div>
       </div>
     </div>
     <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+      <%= f.label :最寄駅 %>
+      <%= f.text_field :station, class:"form-control"  %>
+    </div>
+    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
       <%= f.label :関連URL %>
-      <%= f.text_field :thing_url, class:"form-control"  %>
+      <%= f.text_field :location_url, class:"form-control"  %>
     </div>
     <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
       <%= f.label :メモ %>
-      <%= f.text_area :thing_memo, class:"form-control", size:"30x6" %>
+      <%= f.text_area :location_memo, class:"form-control", size:"30x6"  %>
+    </div>
+    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+      <%= f.label :地図登録したい地名 %>
+      <%= f.text_field :address, placeholder: "記入例　東京スカイツリー", class:"form-control"  %>
     </div>
 
     <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
       <div class="col-md-6" style="text-align: center">
         <%= f.radio_button :public_status, :公開しない, checked: "checked" %>
-        <%= f.label :公開しない, class: "" %>
+        <%= f.label :公開しない, class: "job_type_label" %>
       </div>
       <div class="col-md-6" style="text-align: center">
         <%= f.radio_button :public_status, :公開する %>
-        <%= f.label :公開する, class: "" %>
+        <%= f.label :公開する, class: "job_type_label" %>
       </div>
     </div>
 

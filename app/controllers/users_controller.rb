@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @thing = Thing.where(user_id: @user.id)
     @thing_public = Thing.where(user_id: @user.id, public_status: 2)
+    @location = Location.where(user_id: @user.id)
+    @location_public = Location.where(user_id: @user.id, public_status: 2)
   end
 
   def edit

@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   has_many :things, dependent: :destroy
 
+  has_many :locations, dependent: :destroy
 
 end
