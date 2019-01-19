@@ -5,22 +5,41 @@
   </div>
   <br>
   <br>
-
-  <div class="thing_image col-md-5" style="margin-top: 40px; margin-bottom: 30px; padding-left: 40px; text-align: center;">
-    <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
-  </div>
-  <div class="thing_detail col-md-7" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
-
-    <div class="thing_url" style="word-wrap: break-word;">
-      <p style=""><strong>・URL</strong></p>
-      <P><%= text_url_to_link(h(@thing.thing_url)).html_safe %></p>
+  <div class="thing_info">
+    <div class="thing_image col-md-5" style="margin-top: 40px; margin-bottom: 30px; padding-left: 40px; text-align: center;">
+      <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
     </div>
-    <hr>
-    <div class="thing_memo" style="">
-      <p style=""><strong>・メモ</strong></p>
-      <p class="text-area alert alert-info" style="word-wrap: break-word;">
-        <%= @thing.thing_memo %>
-      </p>
+    <div class="thing_detail col-md-7" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
+      <div class="thing_url" style="word-wrap: break-word;">
+        <p style=""><strong>・URL</strong></p>
+        <P><%= text_url_to_link(h(@thing.thing_url)).html_safe %></p>
+      </div>
+      <hr>
+      <div class="thing_memo" style="">
+        <p style=""><strong>・メモ</strong></p>
+        <% if @thing.thing_memo.blank? %>
+          まだメモはありません
+        <% else %>
+          <p class="text-area alert alert-info" style="word-wrap: break-word;">
+            <%= @thing.thing_memo %>
+          </p>
+        <% end %>
+      </div>
+      <hr>
+      <% if current_user.id == @thing.user_id %>
+        <% if @thing.public_status == "公開しない" %>
+          <div class="thing_private" style="word-wrap: break-word;">
+            <p style=""><strong>・公開ステータス</strong></p>
+            <p style="color: blue;"><%= @thing.public_status %></p>
+          </div>
+        <% else %>
+          <div class="thing_pablic" style="word-wrap: break-word;">
+            <p style=""><strong>・公開ステータス</strong></p>
+            <p style="color: red;"><%= @thing.public_status %></p>
+          </div>
+        <% end %>
+      <% end %>
+      <hr>
     </div>
   </div>
 </div>

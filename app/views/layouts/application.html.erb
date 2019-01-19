@@ -27,6 +27,8 @@
               <li><%= link_to " Mypage", user_path(current_user.id), class: "glyphicon glyphicon-home home" %></li>
               <li><%= link_to " Clip", users_clip_path, class: "glyphicon glyphicon-clip clip" %></li>
               <li><%= link_to ' Users', users_path, class: "glyphicon glyphicon-user users" %></li>
+              <li><%= link_to ' Friends', friendships_path, class: "glyphicon glyphicon-user friends" %></li>
+              <li><%= link_to " Invite!!", new_friendship_path, class: "glyphicon glyphicon-user invite" %></li>
               <li><%= link_to " logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             <% elsif admin_signed_in? %>
               <li class='nav navbar-nav'  style="margin-top: 17px; margin-bottom: 14px;">管理者</li>

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @thing_public = Thing.where(user_id: @user.id, public_status: 2)
     @location = Location.where(user_id: @user.id)
     @location_public = Location.where(user_id: @user.id, public_status: 2)
+    @friendship = Friendship.find_by(to_user_id: @user.id)
   end
 
   def edit

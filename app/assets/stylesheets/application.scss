@@ -32,13 +32,12 @@ body {
 
 
 
-/** user/show.css **/
+/*********** user/showページのcss ***********/
 .user_location {
     border: 1px solid #dcdcdc;
     background-color: #f5f5f5;
     border-radius: 20px;
 }
-
 /* マウスオーバー時のカラー */
 .user_location:hover {
     background-color: #00bfff;
@@ -49,10 +48,23 @@ body {
     background-color: #f5f5f5;
     border-radius: 20px;
 }
-
 /* マウスオーバー時のカラー */
 .user_thing:hover {
     background-color: orange;
 }
+
+
+/*********** friend/indexページのcss ***********/
+.user_friend {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.user_friend:hover {
+    background-color: #98fb98;
+}
+
+
 
 

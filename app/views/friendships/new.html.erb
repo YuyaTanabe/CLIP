@@ -1,0 +1,14 @@
+
+<h1 style="text-align: center; margin-top: 100px; margin-bottom: 40px;">Invite friend!!</h1>
+<div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 15px; border-radius: 20px;">
+  <%= form_for(@friendship) do |f| %>
+    <div class="field col-md-10 col-md-offset-1" style="margin-top: 20px; margin-bottom: 30px;">
+      <%= f.label :フレンドID %>
+      <%= f.text_field :to_friend_id, placeholder: "フレンドになりたいユーザーのフレンドIDを入力してください", class:"form-control" %>
+    </div>
+    <div class="actions" style="text-align: center; margin-bottom: 20px;">
+      <%= f.submit '      フレンドになる      ', class:"btn-lg btn-primary" %>
+    </div>
+  <% end %>
+</div>
+

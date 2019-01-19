@@ -22,16 +22,42 @@
       <hr>
       <div class="location_memo" style="">
         <p style=""><strong>・メモ</strong></p>
-        <p class="text-area alert alert-info" style="word-wrap: break-word;">
-          <%= @location.location_memo %>
-        </p>
+        <% if @location.location_memo.blank? %>
+          まだメモはありません
+        <% else %>
+          <p class="text-area alert alert-info" style="word-wrap: break-word;">
+            <%= @location.location_memo %>
+          </p>
+        <% end %>
       </div>
+      <hr>
+      <% if current_user.id == @location.user_id %>
+        <% if @location.public_status == "公開しない" %>
+          <div class="location_url" style="word-wrap: break-word;">
+            <p style=""><strong>・公開ステータス</strong></p>
+            <p style="color: blue;"><%= @location.public_status %></p>
+          </div>
+        <% else %>
+          <div class="location_url" style="word-wrap: break-word;">
+            <p style=""><strong>・公開ステータス</strong></p>
+            <p style="color: red;"><%= @location.public_status %></p>
+          </div>
+        <% end %>
+      <% end %>
+      <hr>
     </div>
   </div>
-  <div class="location_map col-md-12">
-    <!-- <p style=""><strong>・マップ</strong></p> -->
-    <div id="map" style='width: 100%; height: 500px; border-radius: 20px; border: 2px solid #dcdcdc; margin-bottom: 20px;'></div>
-  </div>
+
+  <% if @location.latitude.blank? %>
+    <div class="location_map col-md-12">
+      <p style="text-align: center">地図登録したい地名が未入力か、入力した地名では登録できなかったため、地図を表示できません。</p>
+    </div>
+  <% else %>
+    <div class="location_map col-md-12">
+      <div id="map" style='width: 100%; height: 500px; border-radius: 20px; border: 2px solid #dcdcdc; margin-bottom: 20px;'></div>
+    </div>
+  <% end %>
+
 </div>
 
 <% if current_user.id == @location.user_id %>
