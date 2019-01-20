@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'friendships/index'
-  get 'friendships/new'
-  get 'friendships/create'
-  get 'friendships/destroy'
   devise_for :admins, controllers: {
     sessions:      "admins/sessions",
     passwords:     "admins/paswwords",
@@ -30,6 +25,10 @@ Rails.application.routes.draw do
   resources :locations
 
   resources :friendships, only: [:new, :create, :index, :destroy]
+
+  resources :rooms, only: [:create, :show, :destroy]
+
+  resources :messages, only: [:create, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -25,9 +25,9 @@
         <% if @location.location_memo.blank? %>
           まだメモはありません
         <% else %>
-          <p class="text-area alert alert-info" style="word-wrap: break-word;">
-            <%= @location.location_memo %>
-          </p>
+          <div class="text-area alert alert-info" style="word-wrap: break-word;">
+            <%= simple_format(@location.location_memo) %>
+          </div>
         <% end %>
       </div>
       <hr>
@@ -61,13 +61,13 @@
 </div>
 
 <% if current_user.id == @location.user_id %>
-  <div class="thing_edit_delete" style="text-align: center">
-    <div class='thing_edit col-md-6' style="margin: 30px auto">
+  <div class="location_edit_delete" style="text-align: center">
+    <div class='location_edit col-md-6' style="margin: 30px auto">
       <%= link_to edit_location_path(@location.id), class:"btn-lg btn-success", method: :get do %>
         <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
       <% end %>
     </div>
-    <div class='thing_delete col-md-6' style="margin: 30px auto">
+    <div class='location_delete col-md-6' style="margin: 30px auto">
       <%= link_to location_path(@location.id), "data-confirm" => "本当に消しますか?", class:"btn-lg btn-danger", method: :delete do %>
         <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
       <% end %>

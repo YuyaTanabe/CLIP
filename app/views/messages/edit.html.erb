@@ -1,0 +1,14 @@
+
+<div class="well col-md-6 col-md-offset-3" style="margin-top: 100px;">
+  <h3 style="text-align: center">チャットメッセージを編集する</h3>
+  <hr>
+  <%= form_for @message do |f| %>
+    <%= f.text_area :content, class:"form-control", placeholder:"メッセージを入力して下さい" %>
+    <%= f.hidden_field :room_id, value: @message.room_id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <br>
+    <div class="text-center">
+      <%= f.submit "再投稿", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

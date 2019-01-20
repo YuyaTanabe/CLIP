@@ -4,11 +4,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @thing = Thing.where(user_id: @user.id)
-    @thing_public = Thing.where(user_id: @user.id, public_status: 2)
-    @location = Location.where(user_id: @user.id)
-    @location_public = Location.where(user_id: @user.id, public_status: 2)
-    @friendship = Friendship.find_by(to_user_id: @user.id)
+    if current_user.is_friend?(@user)
+      @thing_public = Thing.where(user_id: @user.id, public_status: 2)
+      @location_public = Location.where(user_id: @user.id, public_status: 2)
+      @friendship = Friendship.find_by(to_user_id: @user.id)
+      @room = Room.new
+      @entry = Entry.new
+    elsif current_user.id == @user.id
+      @thing = Thing.where(user_id: @user.id)
+      @location = Location.where(user_id: @user.id)
+      @entries = current_user.entries
+    else
+      flash[:alert] = "そのユーザーとはフレンドではないためそのページへは行けません"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def edit

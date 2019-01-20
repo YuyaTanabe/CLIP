@@ -27,6 +27,20 @@
         <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
         <p style=""><%= @user.user_name %></p>
       </div>
+      <br>
+      <br>
+      <div class="chat_button" style="">
+        <%= form_for @room do |f| %>
+          <% @friendship = Friendship.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
+          <%= f.hidden_field :friendship_id, :value => @friendship.id %>
+          <%= f.hidden_field :invite_user_id, :value => current_user.id %>
+          <%= f.hidden_field :invited_user_id, :value => @user.id %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value => @user.id %>
+            <% end %>
+          <%= f.submit "チャット", class:"btn-lg btn-warning" %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
@@ -34,6 +48,21 @@
 <% if current_user.id != @user.id %>
   <div class="friend_delete" style="margin-top: 290px; float: right;">
     <%= link_to "フレンド解除", friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", method: :delete, class:"btn-lg btn-danger" %>
+  </div>
+<% end %>
+
+<% if current_user.id == @user.id %>
+  <div class="user_edit_delete" style="text-align: center">
+    <div class='user_edit col-md-6' style="margin: 30px auto">
+      <%= link_to edit_user_path(@user.id), class:"btn-lg btn-success", method: :get do %>
+        <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
+      <% end %>
+    </div>
+    <div class='user_delete col-md-6' style="margin: 30px auto">
+      <%= link_to user_path(@user.id), "data-confirm" => "本当に消しますか?", class:"btn-lg btn-danger", method: :delete do %>
+        <span class="glyphicon glyphicon-trash"></span> アカウント削除 <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
@@ -56,7 +85,7 @@
                   <%= location.location_name %>
                 </div>
                 <div class="location_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 20px; font-size: 16px; color: black;">
-                  <span style="color: red;">公開</span>
+                  <span style="background-color: red; color: white; border-radius: 5px;">OPEN</span>
                 </div>
               <% end %>
             </div>
@@ -91,7 +120,7 @@
                   <%= thing.thing_name %>
                 </div>
                 <div class="thing_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 20px; font-size: 16px; color: black;">
-                  <span style="color: red;">公開</span>
+                  <span style="background-color: red; color: white; border-radius: 5px;">OPEN</span>
                 </div>
               <% end %>
             </div>
