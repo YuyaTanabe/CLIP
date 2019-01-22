@@ -16,7 +16,10 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
-/** application.css **/
+
+
+
+/*********** application.css ***********/
 header {
     color: white;
 }
@@ -29,6 +32,118 @@ body {
     margin-top: 50px;
 }
 /** application.css **/
+
+
+
+
+/*********** admins/topページのcss ***********/
+.admin_top_users {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.admin_top_users:hover {
+    background-color: #98fb98;
+}
+.users_string:hover {
+    color: #ffffff;
+}
+
+.admin_top_locations {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.admin_top_locations:hover {
+    background-color: #00bfff;
+}
+.location_string:hover {
+    color: #ffffff;
+}
+
+.admin_top_things {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.admin_top_things:hover {
+    background-color: #ffd700;
+}
+.thing_string:hover {
+    color: #ffffff;
+}
+
+
+
+/*********** topページのcss ***********/
+.top_sign_up {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.top_sign_up:hover {
+    background-color: #cc1237;
+}
+.sign_up_string:hover {
+    color: #ffffff;
+}
+
+.top_login {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.top_login:hover {
+    background-color: #000066;
+}
+.login_string:hover {
+    color: #ffffff;
+}
+
+
+
+/*********** admins/user/indexページのcss ***********/
+.user_index {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.user_index:hover {
+    background-color: #98fb98;
+}
+
+
+
+/*********** admins/location/indexページのcss ***********/
+.location_index {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.location_index:hover {
+    background-color: #00bfff;
+}
+
+
+
+/*********** admins/thing/indexページのcss ***********/
+.thing_index {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.thing_index:hover {
+    background-color: #ffd700;
+}
+
 
 
 
@@ -50,8 +165,10 @@ body {
 }
 /* マウスオーバー時のカラー */
 .user_thing:hover {
-    background-color: orange;
+    background-color: #ffd700;
 }
+
+
 
 
 /*********** friend/indexページのcss ***********/

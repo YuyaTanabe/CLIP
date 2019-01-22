@@ -7,7 +7,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   #管理者サインアップ後のリダイレクト先
   def after_sign_up_path_for(resource)
-    root_path
+    admins_top_path
   end
 
   protected

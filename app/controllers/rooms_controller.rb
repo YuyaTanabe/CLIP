@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     if user_signed_in?
       @room = Room.find(params[:id])

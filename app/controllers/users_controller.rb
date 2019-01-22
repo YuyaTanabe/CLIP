@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
+    @users = User.all
   end
 
   def show
@@ -21,12 +24,25 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      flash[:alert] = "そのページへは行けません"
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    flash[:notice] = user.user_name + "のアカウント情報を編集しました"
+    redirect_to user_path(user.id)
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    flash[:alert] = user.user_name + "のアカウント情報を削除しました"
+    redirect_to top_path
   end
 
   def clip

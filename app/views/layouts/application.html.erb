@@ -31,7 +31,8 @@
               <li><%= link_to " Invite!!", new_friendship_path, class: "glyphicon glyphicon-user invite" %></li>
               <li><%= link_to " logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             <% elsif admin_signed_in? %>
-              <li class='nav navbar-nav'  style="margin-top: 17px; margin-bottom: 14px;">管理者</li>
+              <li><%= link_to " 管理者", admins_top_path, class: "glyphicon glyphicon-home header_admin" %></li>
+              <li><%= link_to ' Users', admins_users_path, class: "glyphicon glyphicon-user users" %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-block" %></li>
             <% else %>
               <li><%= link_to " Home", root_path, class: "glyphicon glyphicon-home home" %></li>

@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     message = Message.new(message_params)
     if Entry.where(user_id: current_user.id, room_id: message.room_id).present?

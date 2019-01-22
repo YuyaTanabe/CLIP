@@ -1,2 +1,21 @@
-<h1>Top#top</h1>
-<p>Find me in app/views/top/top.html.erb</p>
+
+<div class="top col-md-12" style="margin-top: 150px; margin-bottom: 20px;">
+  <div class="top_left col-md-6">
+    <div class="top_sign_up col-md-10 col-md-offset-1" style="height: 300px; padding: 0px;">
+      <%= link_to new_user_registration_path, class:"" do %>
+        <div class="sign_up_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; float: left; font-size: 60px; text-align: center;">
+          Sign up
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="top_right col-md-6">
+    <div class="top_login col-md-10 col-md-offset-1" style="height: 300px; padding: 0px;">
+      <%= link_to new_user_session_path, class:"" do %>
+        <div class="login_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; float: left; font-size: 60px; text-align: center;">
+          Login
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

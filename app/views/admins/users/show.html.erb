@@ -1,0 +1,111 @@
+
+<div class="user_profile well well-compact col-md-8 col-md-offset-2" style="margin-top: 40px; border-radius: 20px;">
+  <div class="user_image col-md-5" style="margin-top: 20px; margin-bottom: 20px; padding-left: 40px; text-align: center;">
+    <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
+  </div>
+  <div class="user_detail col-md-7" style="margin-top: 10px; margin-bottom: 10px; font-size: 16px;">
+    <div class="user_name" style="">
+      <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
+      <p style=""><%= @user.user_name %></p>
+    </div>
+    <hr style="margin-top: 0px;">
+    <div class="user_name" style="">
+      <p style="margin-bottom: 4px;"><strong>・Eメールアドレス</strong></p>
+      <p style=""><%= @user.email %></p>
+    </div>
+    <hr style="margin-top: 0px;">
+    <div class="user_name" style="">
+      <p style="margin-bottom: 4px;"><strong>・フレンドID</strong></p>
+      <p style=""><%= @user.friend_id %></p>
+    </div>
+    <hr style="margin-top: 0px; margin-bottom: 0px;">
+  </div>
+</div>
+
+<div class="user_edit_delete" style="text-align: center">
+  <div class='user_edit col-md-6' style="margin: 30px auto">
+    <%= link_to edit_admins_user_path(@user.id), class:"btn-lg btn-success", method: :get do %>
+      <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
+    <% end %>
+  </div>
+  <div class='user_delete col-md-6' style="margin: 30px auto">
+    <%= link_to admins_user_path(@user.id), "data-confirm" => "管理者権限で、本当に削除しますか?", class:"btn-lg btn-danger", method: :delete do %>
+      <span class="glyphicon glyphicon-trash"></span> アカウント削除 <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </div>
+</div>
+
+<hr class="col-md-12">
+<div class="location_and_thing col-md-12">
+  <div class="left col-md-6">
+    <div class="user_location_index col-md-10 col-md-offset-1" style="height: 60px; margin-bottom: 20px;">
+      <div class="thing_title" style="">
+        <p style="font-size: 40px; text-align: center"><strong>Locations</strong></p>
+      </div>
+      <% @location.each do |location| %>
+        <% if location.public_status == "公開する" %>
+          <div class="user_location" style="height: 60px; margin-bottom: 20px;">
+            <%= link_to admins_location_path(location.id), class:"" do %>
+              <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+              </div>
+              <div class="location_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                <%= location.location_name %>
+              </div>
+              <div class="location_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 20px; font-size: 16px; color: black;">
+                <span style="background-color: red; color: white; border-radius: 5px;">OPEN</span>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="user_location" style="height: 60px; margin-bottom: 20px;">
+            <%= link_to admins_location_path(location.id), class:"" do %>
+              <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+              </div>
+              <div class="location_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                <%= location.location_name %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="right col-md-6">
+    <div class="user_thing_index col-md-10 col-md-offset-1" style="height: 60px; margin-bottom: 20px;">
+      <div class="thing_title" style="">
+        <p style="font-size: 40px; text-align: center"><strong>Objects</strong></p>
+      </div>
+      <% @thing.each do |thing| %>
+        <% if thing.public_status == "公開する" %>
+          <div class="user_thing" style="height: 60px; margin-bottom: 20px;">
+            <%= link_to admins_thing_path(thing.id), class:"" do %>
+              <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+              </div>
+              <div class="thing_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                <%= thing.thing_name %>
+              </div>
+              <div class="thing_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 20px; font-size: 16px; color: black;">
+                <span style="background-color: red; color: white; border-radius: 5px;">OPEN</span>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="user_thing" style="height: 60px; margin-bottom: 20px;">
+            <%= link_to admins_thing_path(thing.id), class:"" do %>
+              <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+              </div>
+              <div class="thing_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                <%= thing.thing_name %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

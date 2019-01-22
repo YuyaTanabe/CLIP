@@ -1,20 +1,8 @@
-class ThingsController < ApplicationController
-  before_action :authenticate_user!
+class Admins::ThingsController < ApplicationController
+  before_action :authenticate_admin!
 
-  def new
-    @thing = Thing.new
-  end
-
-  def create
-    thing = Thing.new(thing_params)
-    thing.user_id = current_user.id
-    if thing.save
-      flash[:notice] = "クリップ完了"
-      redirect_to thing_path(thing.id)
-    else
-      @thing = Thing.new
-      render "new"
-    end
+  def index
+    @things = Thing.all
   end
 
   def show
@@ -29,7 +17,7 @@ class ThingsController < ApplicationController
     thing = Thing.find(params[:id])
     if thing.update(thing_params)
       flash[:notice] = thing.thing_name + "を編集しました"
-      redirect_to thing_path(thing.id)
+      redirect_to admins_things_path
     else
       @thing = Thing.find(params[:id])
       flash[:notice] = @thing.thing_name + "を編集できませんでした"
@@ -41,10 +29,8 @@ class ThingsController < ApplicationController
     thing = Thing.find(params[:id])
     thing.destroy
     flash[:alert] = thing.thing_name + "を削除しました"
-    redirect_to user_path(current_user)
+    redirect_to admins_things_path
   end
-
-  private
 
   def thing_params
     params.require(:thing).permit(

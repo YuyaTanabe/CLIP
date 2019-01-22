@@ -1,20 +1,8 @@
-class LocationsController < ApplicationController
-  before_action :authenticate_user!
+class Admins::LocationsController < ApplicationController
+  before_action :authenticate_admin!
 
-  def new
-    @location = Location.new
-  end
-
-  def create
-    location = Location.new(location_params)
-    location.user_id = current_user.id
-    if location.save
-      flash[:notice] = "クリップ完了"
-      redirect_to location_path(location.id)
-    else
-      @location = Location.new
-      render "new"
-    end
+  def index
+    @locations = Location.all
   end
 
   def show
@@ -29,7 +17,7 @@ class LocationsController < ApplicationController
     location = Location.find(params[:id])
     if location.update(location_params)
       flash[:notice] = location.location_name + "を編集しました"
-      redirect_to location_path(location.id)
+      redirect_to admins_locations_path
     else
       @location = Location.find(params[:id])
       flash[:notice] = @location.location_name + "を編集できませんでした"
@@ -40,7 +28,7 @@ class LocationsController < ApplicationController
   def destroy
     location = Location.find(params[:id])
     location.destroy
-    redirect_to user_path(current_user)
+    redirect_to admins_locations_path
     flash[:alert] = location.location_name + "を削除しました"
   end
 

@@ -31,20 +31,18 @@
         <% end %>
       </div>
       <hr>
-      <% if current_user.id == @location.user_id %>
-        <% if @location.public_status == "公開しない" %>
-          <div class="location_url" style="word-wrap: break-word;">
-            <p style=""><strong>・公開ステータス</strong></p>
-            <p style="color: blue;"><%= @location.public_status %></p>
-          </div>
-        <% else %>
-          <div class="location_url" style="word-wrap: break-word;">
-            <p style=""><strong>・公開ステータス</strong></p>
-            <p style="color: red;"><%= @location.public_status %></p>
-          </div>
-        <% end %>
-      <hr>
+      <% if @location.public_status == "公開しない" %>
+        <div class="location_url" style="word-wrap: break-word;">
+          <p style=""><strong>・公開ステータス</strong></p>
+          <p style="color: blue;"><%= @location.public_status %></p>
+        </div>
+      <% else %>
+        <div class="location_url" style="word-wrap: break-word;">
+          <p style=""><strong>・公開ステータス</strong></p>
+          <p style="color: red;"><%= @location.public_status %></p>
+        </div>
       <% end %>
+      <hr>
     </div>
   </div>
 
@@ -60,20 +58,18 @@
 
 </div>
 
-<% if current_user.id == @location.user_id %>
-  <div class="location_edit_delete" style="text-align: center">
-    <div class='location_edit col-md-6' style="margin: 30px auto">
-      <%= link_to edit_location_path(@location.id), class:"btn-lg btn-success", method: :get do %>
-        <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
-      <% end %>
-    </div>
-    <div class='location_delete col-md-6' style="margin: 30px auto">
-      <%= link_to location_path(@location.id), "data-confirm" => "本当に消しますか?", class:"btn-lg btn-danger", method: :delete do %>
-        <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
-      <% end %>
-    </div>
+<div class="location_edit_delete" style="text-align: center">
+  <div class='location_edit col-md-6' style="margin: 30px auto">
+    <%= link_to edit_admins_location_path(@location.id), class:"btn-lg btn-success", method: :get do %>
+      <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
+    <% end %>
   </div>
-<% end %>
+  <div class='location_delete col-md-6' style="margin: 30px auto">
+    <%= link_to admins_location_path(@location.id), "data-confirm" => "管理者権限で、本当に削除しますか?", class:"btn-lg btn-danger", method: :delete do %>
+      <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </div>
+</div>
 
 
 <script type="text/javascript">

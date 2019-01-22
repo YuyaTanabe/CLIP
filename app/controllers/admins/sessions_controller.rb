@@ -5,7 +5,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   #管理者ログイン後のリダイレクト先
   def after_sign_in_path_for(resource)
-      root_path
+      admins_top_path
   end
 
   #管理者ログアウト後のリダイレクト先

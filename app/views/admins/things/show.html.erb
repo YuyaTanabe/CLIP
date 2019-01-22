@@ -1,0 +1,63 @@
+
+<div class="well well-compact col-md-8 col-md-offset-2" style="margin-top: 80px; border-radius: 20px;">
+  <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
+    <strong><%= @thing.thing_name %></strong>
+  </div>
+  <br>
+  <br>
+  <div class="thing_info">
+    <div class="thing_image col-md-5" style="margin-top: 40px; margin-bottom: 30px; padding-left: 40px; text-align: center;">
+      <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
+    </div>
+    <div class="thing_detail col-md-7" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
+      <div class="thing_url" style="word-wrap: break-word;">
+        <p style=""><strong>・URL</strong></p>
+        <P><%= text_url_to_link(h(@thing.thing_url)).html_safe %></p>
+      </div>
+      <hr>
+      <div class="thing_memo" style="">
+        <p style=""><strong>・メモ</strong></p>
+        <% if @thing.thing_memo.blank? %>
+          まだメモはありません
+        <% else %>
+          <div class="text-area alert alert-info" style="word-wrap: break-word;">
+            <%= simple_format(@thing.thing_memo) %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <% if @thing.public_status == "公開しない" %>
+        <div class="thing_private" style="word-wrap: break-word;">
+          <p style=""><strong>・公開ステータス</strong></p>
+          <p style="color: blue;"><%= @thing.public_status %></p>
+        </div>
+        <hr>
+        <div class="thing_pablic" style="word-wrap: break-word;">
+          <p style=""><strong>・公開ステータス</strong></p>
+          <p style="color: red;"><%= @thing.public_status %></p>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="thing_edit_delete" style="text-align: center">
+  <div class='thing_edit col-md-6' style="margin: 30px auto">
+    <%= link_to edit_admins_thing_path(@thing.id), class:"btn-lg btn-success", method: :get do %>
+      <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
+    <% end %>
+  </div>
+  <div class='thing_delete col-md-6' style="margin: 30px auto">
+    <%= link_to admins_thing_path(@thing.id), "data-confirm" => "管理者権限で、本当に削除しますか?", class:"btn-lg btn-danger", method: :delete do %>
+      <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -15,14 +15,20 @@ Rails.application.routes.draw do
   #トップページをルートパスに指定
   root to: 'top#top'
 
-  resources :admins, only: [:show]
+  get 'admins/top' => 'admins#top'
+
+  namespace :admins do
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :things, only: [:index, :show, :edit, :update, :destroy]
+    resources :locations, only: [:index, :show, :edit, :update, :destroy]
+  end
 
   get 'users/clip'
-  resources :users, only: [:index, :create, :show, :edit, :update, :destroy]
+  resources :users, only: [:create, :show, :edit, :update, :destroy]
 
-  resources :things
+  resources :things, only: [:new, :create, :show, :edit, :update, :destroy]
 
-  resources :locations
+  resources :locations, only: [:new, :create, :show, :edit, :update, :destroy]
 
   resources :friendships, only: [:new, :create, :index, :destroy]
 
