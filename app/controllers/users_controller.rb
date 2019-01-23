@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     flash[:alert] = user.user_name + "のアカウント情報を削除しました"
-    redirect_to top_path
+    redirect_to root_path
   end
 
   def clip

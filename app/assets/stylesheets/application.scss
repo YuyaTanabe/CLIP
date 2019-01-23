@@ -21,17 +21,34 @@
 
 /*********** application.css ***********/
 header {
-    color: white;
+  color: white;
 }
 
 header .navbar-left span {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 body {
-    margin-top: 50px;
+  margin-top: 50px;
+  padding-bottom: 80px;
+  background-image: url("PAK76_chikyuugitobin20130804_TP_V.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 50%;
+  background-position-y: 10%;
+  background-attachment:fixed;
 }
-/** application.css **/
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+footer {
+  background-color: black;
+}
+
 
 
 
@@ -167,6 +184,37 @@ body {
 .user_thing:hover {
     background-color: #ffd700;
 }
+
+
+
+
+/*********** uder/clipページのcss ***********/
+.clip_location {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.clip_location:hover {
+    background-color: #00bfff;
+}
+.clip_location_string:hover {
+    color: #ffffff;
+}
+
+.clip_thing {
+    border: 1px solid #dcdcdc;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.clip_thing:hover {
+    background-color: #ffd700;
+}
+.clip_thing_string:hover {
+    color: #ffffff;
+}
+
 
 
 

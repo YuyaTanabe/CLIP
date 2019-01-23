@@ -1,13 +1,22 @@
 
-<div class='clip' style="margin-top: 100px; text-align: center;">
-
-
-  <div class='clip_lacation col-md-6' style="margin-top: 100px; text-align: center;">
-    <%= link_to "Clip location",new_location_path, class:"btn-lg btn-info" %>
+<div class="clip col-md-12" style="margin-top: 150px; margin-bottom: 20px;">
+  <div class="clip_left col-md-6">
+    <div class="clip_location col-md-10 col-md-offset-1" style="height: 300px; padding: 0px; opacity: 0.8;">
+      <%= link_to new_location_path, class:"" do %>
+        <div class="clip_location_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; font-size: 60px; text-align: center; text-shadow: 2px 2px 1px #000">
+          Clip location
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class='clip thing col-md-6' style="margin-top: 100px; text-align: center;">
-    <%= link_to "Clip object",new_thing_path, class:"btn-lg btn-warning" %>
+  <div class="clip_right col-md-6">
+    <div class="clip_thing col-md-10 col-md-offset-1" style="height: 300px; padding: 0px; opacity: 0.8;">
+      <%= link_to new_thing_path, class:"" do %>
+        <div class="clip_thing_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; font-size: 60px; text-align: center; text-shadow: 2px 2px 1px #000">
+          Clip object
+        </div>
+      <% end %>
+    </div>
   </div>
-
 </div>
+

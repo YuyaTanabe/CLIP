@@ -16,3 +16,21 @@
   //= require jquery
   //= require bootstrap-sprockets
   //= require_tree .
+
+
+$(function(){
+function resize(){
+getHeight = $('body').height();//変数を関数外でも使うのでvarは付けません。
+windowHeight = window.innerHeight;
+scrollHeight = getHeight-windowHeight;//最大スクロール値の計算
+}
+resize();//読み込み時の処理
+window.onresize = resize;//リサイズのイベントハンドラ
+$(window).scroll(function () {
+ScrollTop = $(document).scrollTop();
+bgPosition = 1/scrollHeight*ScrollTop+10;
+$('body').css(
+{backgroundPositionY: bgPosition+"%"}
+);
+});
+});

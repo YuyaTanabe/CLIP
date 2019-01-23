@@ -6,4 +6,7 @@ class Thing < ApplicationRecord
   # ラジオボタン
   enum public_status: {公開しない:1, 公開する:2}
 
+# バリデーション
+  validates :thing_name, presence: true
+
 end

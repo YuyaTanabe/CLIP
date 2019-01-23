@@ -23,6 +23,11 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+# バリデーション
+  validates :user_name, presence: true
+  validates :friend_id, presence: true, uniqueness: true
+
+
 
   # user(=入力したフレンドIDを持つユーザー)とすでにフレンド関係にあるかの確認
   def is_friend?(user)

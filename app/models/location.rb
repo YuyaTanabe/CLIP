@@ -10,4 +10,7 @@ class Location < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+# バリデーション
+  validates :location_name, presence: true
+
 end
