@@ -20,23 +20,27 @@
             <nav class='nav navbar-nav' >
               <h4 style="margin-top: 19px; margin-bottom: 14px; margin-left: 50px; color: orange;"><span><%= current_user.user_name %> ID <%= current_user.id %></span></h4>
             </nav>
+          <% elsif admin_signed_in? %>
+            <nav class='nav navbar-nav' >
+              <h4 style="margin-top: 19px; margin-bottom: 14px; margin-left: 50px; color: orange;"><span>管理者　ID <%= current_admin.id %></span></h4>
+            </nav>
           <% end %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><%= link_to " Mypage", user_path(current_user.id), class: "glyphicon glyphicon-home home" %></li>
-              <li><%= link_to " Clip", users_clip_path, class: "glyphicon glyphicon-clip clip" %></li>
-              <li><%= link_to ' Friends', friendships_path, class: "glyphicon glyphicon-user friends" %></li>
-              <li><%= link_to " Invite!!", new_friendship_path, class: "glyphicon glyphicon-user invite" %></li>
-              <li><%= link_to " logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+              <li><%= link_to " Mypage", user_path(current_user.id), class: "nav_menu home" %></li>
+              <li><%= link_to " Clip", users_clip_path, class: "nav_menu clip" %></li>
+              <li><%= link_to ' Friends', friendships_path, class: "nav_menu friends" %></li>
+              <li><%= link_to " Invite", new_friendship_path, class: "nav_menu invite" %></li>
+              <li><%= link_to " logout", destroy_user_session_path, method: :delete, class: "nav_menu logout" %></li>
             <% elsif admin_signed_in? %>
-              <li><%= link_to " 管理者", admins_top_path, class: "glyphicon glyphicon-home header_admin" %></li>
-              <li><%= link_to ' Users', admins_users_path, class: "glyphicon glyphicon-user users" %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+              <li><%= link_to " Top", admins_top_path, class: "nav_menu admin" %></li>
+              <li><%= link_to ' Users', admins_users_path, class: "nav_menu users" %></li>
+              <li><%= link_to " logout", destroy_admin_session_path, method: :delete, class: "nav_menu logout" %></li>
             <% else %>
-              <li><%= link_to " Home", root_path, class: "glyphicon glyphicon-home home" %></li>
-              <li><%= link_to " sign up", new_user_registration_path, class: "glyphicon glyphicon-edit sign_up" %></li>
-              <li><%= link_to " login", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %></li>
+              <li><%= link_to " Home", root_path, class: "nav_menu home" %></li>
+              <li><%= link_to " sign up", new_user_registration_path, class: "nav_menu sign_up" %></li>
+              <li><%= link_to " login", new_user_session_path, class: "nav_menu sign_in" %></li>
             <% end %>
           </ul>
         </nav>
@@ -45,24 +49,23 @@
 
 
     <div class='main'>
-      <% if notice %>
-        <br>
-        <p class="alert alert-success" style="text-align: center;" ><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <br>
-        <p class="alert alert-danger" style="text-align: center;" ><%= alert %></p>
-      <% end %>
-
-
       <div class='container'>
         <div class='row'>
 
-          <%= yield %>
+      <% if notice %>
+        <br>
+        <p class="alert alert-success col-xs-6 col-xs-offset-3" style="text-align: center; margin-bottom: 0px;" ><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <br>
+        <p class="alert alert-danger col-xs-6 col-xs-offset-3" style="text-align: center; margin-bottom: 0px;" ><%= alert %></p>
+      <% end %>
 
+          <%= yield %>
+          <!-- ページトップへ移動するボタン -->
+          <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
         </div>
       </div>
-
     </div>
 
     <footer class="navbar navbar-fixed-bottom navbar-inverse">

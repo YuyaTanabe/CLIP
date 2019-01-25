@@ -44,39 +44,11 @@ class RoomsController < ApplicationController
     end
   end
 
-  def edit
-    @room = Room.find(params[:id])
-    if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-    else
-      @user = User.find_by(id: current_user.id)
-      redirect_to user_path(@user.id)
-      flash[:alert] = "そのページへは行けません"
-    end
-  end
-
-  def update
-    room = Room.find(params[:id])
-    if Entry.where(user_id: current_user.id, room_id: room.id).present?
-      room.update(room_params)
-      redirect_to room_path(room.id)
-      flash[:notice] = room.room_name + "の情報を変更しました"
-    else
-      @user = User.find_by(id: current_user.id)
-      redirect_to user_path(@user.id)
-      flash[:alert] = "そのページへは行けません"
-    end
-  end
-
   def destroy
     room = Room.find(params[:id])
     room.destroy
-    if room.room_name != nil
-      flash[:alert] = "チャットルーム" + room.room_name + "を削除しました"
-      redirect_to user_path(current_user)
-    else
-      flash[:alert] = "チャットルームを削除しました"
-      redirect_to user_path(current_user)
-    end
+    flash[:alert] = "チャットルームを削除しました"
+    redirect_to user_path(current_user)
   end
 
   private

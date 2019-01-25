@@ -2,11 +2,19 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    message = Message.new(message_params)
-    if Entry.where(user_id: current_user.id, room_id: message.room_id).present?
-      message.user_id = current_user.id
-      message.save
-      redirect_to room_path(message.room_id)
+    @message = Message.new(message_params)
+    if Entry.where(user_id: current_user.id, room_id: @message.room_id).present?
+      @message.user_id = current_user.id
+      if @message.save
+        redirect_to room_path(@message.room_id)
+      else
+        @room = Room.find_by(id: @message.room_id)
+        @messages = @room.messages
+        @friendship = Friendship.where(from_user_id: current_user.id)
+        @room_invite_user_c = Room.where(invite_user_id: current_user.id)
+        @room_invited_user_c = Room.where(invited_user_id: current_user.id)
+        render "rooms/show"
+      end
     else
       @user = User.find_by(id: current_user.id)
       redirect_to user_path(@user.id)

@@ -14,13 +14,12 @@ class Admins::LocationsController < ApplicationController
   end
 
   def update
-    location = Location.find(params[:id])
-    if location.update(location_params)
-      flash[:notice] = location.location_name + "を編集しました"
+    @location = Location.find(params[:id])
+    if @location.update(location_params)
+      flash[:notice] = @location.location_name + "を編集しました。"
       redirect_to admins_locations_path
     else
-      @location = Location.find(params[:id])
-      flash[:notice] = @location.location_name + "を編集できませんでした"
+      flash[:alert] = "編集できませんでした。"
       render "edit"
     end
   end
@@ -29,7 +28,7 @@ class Admins::LocationsController < ApplicationController
     location = Location.find(params[:id])
     location.destroy
     redirect_to admins_locations_path
-    flash[:alert] = location.location_name + "を削除しました"
+    flash[:alert] = location.location_name + "を削除しました。"
   end
 
   private

@@ -6,13 +6,12 @@ class LocationsController < ApplicationController
   end
 
   def create
-    location = Location.new(location_params)
-    location.user_id = current_user.id
-    if location.save
+    @location = Location.new(location_params)
+    @location.user_id = current_user.id
+    if @location.save
       flash[:notice] = "クリップ完了"
-      redirect_to location_path(location.id)
+      redirect_to location_path(@location.id)
     else
-      @location = Location.new
       render "new"
     end
   end
@@ -26,13 +25,18 @@ class LocationsController < ApplicationController
   end
 
   def update
-    location = Location.find(params[:id])
-    if location.update(location_params)
-      flash[:notice] = location.location_name + "を編集しました"
-      redirect_to location_path(location.id)
+    @location = Location.find(params[:id])
+    if @location.update(location_params)
+      if @location.address.empty?
+        @location.update(latitude: nil, longitude: nil)
+        flash[:notice] = @location.location_name + "を編集しました。"
+        redirect_to location_path(@location.id)
+      else
+        flash[:notice] = @location.location_name + "を編集しました。"
+        redirect_to location_path(@location.id)
+      end
     else
-      @location = Location.find(params[:id])
-      flash[:notice] = @location.location_name + "を編集できませんでした"
+      flash[:alert] = "編集できませんでした。"
       render "edit"
     end
   end
@@ -41,7 +45,7 @@ class LocationsController < ApplicationController
     location = Location.find(params[:id])
     location.destroy
     redirect_to user_path(current_user)
-    flash[:alert] = location.location_name + "を削除しました"
+    flash[:alert] = location.location_name + "を削除しました。"
   end
 
   private

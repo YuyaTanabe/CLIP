@@ -61,7 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# --- 追加したgem
+# --- 追加したgem ---
 # CSSフレームワークBootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
@@ -80,6 +80,10 @@ gem 'gmaps4rails'
 # 環境変数設定用
 gem 'dotenv-rails'
 
+# 日本語化
+gem 'rails-i18n'
 
+# font-awesomeの利用
+gem "font-awesome-rails"
 
 

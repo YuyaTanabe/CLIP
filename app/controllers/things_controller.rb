@@ -6,13 +6,12 @@ class ThingsController < ApplicationController
   end
 
   def create
-    thing = Thing.new(thing_params)
-    thing.user_id = current_user.id
-    if thing.save
+    @thing = Thing.new(thing_params)
+    @thing.user_id = current_user.id
+    if @thing.save
       flash[:notice] = "クリップ完了"
-      redirect_to thing_path(thing.id)
+      redirect_to thing_path(@thing.id)
     else
-      @thing = Thing.new
       render "new"
     end
   end
@@ -26,13 +25,12 @@ class ThingsController < ApplicationController
   end
 
   def update
-    thing = Thing.find(params[:id])
-    if thing.update(thing_params)
-      flash[:notice] = thing.thing_name + "を編集しました"
-      redirect_to thing_path(thing.id)
+    @thing = Thing.find(params[:id])
+    if @thing.update(thing_params)
+      flash[:notice] = @thing.thing_name + "を編集しました。"
+      redirect_to thing_path(@thing.id)
     else
-      @thing = Thing.find(params[:id])
-      flash[:notice] = @thing.thing_name + "を編集できませんでした"
+      flash[:alert] = "編集できませんでした。"
       render "edit"
     end
   end
@@ -40,7 +38,7 @@ class ThingsController < ApplicationController
   def destroy
     thing = Thing.find(params[:id])
     thing.destroy
-    flash[:alert] = thing.thing_name + "を削除しました"
+    flash[:alert] = thing.thing_name + "を削除しました。"
     redirect_to user_path(current_user)
   end
 

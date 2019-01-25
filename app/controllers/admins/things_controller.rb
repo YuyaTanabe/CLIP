@@ -14,13 +14,12 @@ class Admins::ThingsController < ApplicationController
   end
 
   def update
-    thing = Thing.find(params[:id])
-    if thing.update(thing_params)
-      flash[:notice] = thing.thing_name + "を編集しました"
+    @thing = Thing.find(params[:id])
+    if @thing.update(thing_params)
+      flash[:notice] = @thing.thing_name + "を編集しました。"
       redirect_to admins_things_path
     else
-      @thing = Thing.find(params[:id])
-      flash[:notice] = @thing.thing_name + "を編集できませんでした"
+      flash[:alert] = "編集できませんでした。"
       render "edit"
     end
   end
@@ -28,7 +27,7 @@ class Admins::ThingsController < ApplicationController
   def destroy
     thing = Thing.find(params[:id])
     thing.destroy
-    flash[:alert] = thing.thing_name + "を削除しました"
+    flash[:alert] = thing.thing_name + "を削除しました。"
     redirect_to admins_things_path
   end
 

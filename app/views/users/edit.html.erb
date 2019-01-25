@@ -1,4 +1,15 @@
 
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="well well-compact col-md-4 col-md-offset-4" >
+    <h3><%= @user.errors.count %>件のエラーが発生しました。</h3>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="well well-compact col-md-4 col-md-offset-4" style="margin-top: 40px;">
 <h2 style="margin-top: 10px; text-align: center;">アカウント情報編集</h2>
 
@@ -10,7 +21,7 @@
     </div>
 
     <div class="field" style="margin-bottom: 20px;">
-      <%= f.label :ユーザーイメージ画像 %>
+      <%= f.label :イメージ画像 %>
       <%= f.attachment_field :user_image, placeholder: "イメージ画像を選択" %>
     </div>
 

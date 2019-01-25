@@ -12,5 +12,6 @@ class Location < ApplicationRecord
 
 # バリデーション
   validates :location_name, presence: true
+  validates :location_memo, length: { maximum: 2000 }
 
 end

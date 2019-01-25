@@ -8,5 +8,5 @@ class Thing < ApplicationRecord
 
 # バリデーション
   validates :thing_name, presence: true
-
+  validates :thing_memo, length: { maximum: 2000 }
 end
