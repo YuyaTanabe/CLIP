@@ -26,7 +26,7 @@ class Admins::LocationsController < ApplicationController
 
   def destroy
     location = Location.find(params[:id])
-    location.destroy
+    location.really_destroy!
     redirect_to admins_locations_path
     flash[:alert] = location.location_name + "を削除しました。"
   end

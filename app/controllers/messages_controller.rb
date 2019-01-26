@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
 
   def destroy
     message = Message.find(params[:id])
-    message.destroy
+    message.really_destroy!
     flash[:alert] = "メッセージを削除しました"
     redirect_to room_path(message.room_id)
   end

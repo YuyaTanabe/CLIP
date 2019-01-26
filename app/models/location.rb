@@ -10,8 +10,11 @@ class Location < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-# バリデーション
+  # バリデーション
   validates :location_name, presence: true
   validates :location_memo, length: { maximum: 2000 }
+
+  # paranoia
+  acts_as_paranoid
 
 end

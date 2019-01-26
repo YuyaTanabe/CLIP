@@ -37,7 +37,7 @@ class ThingsController < ApplicationController
 
   def destroy
     thing = Thing.find(params[:id])
-    thing.destroy
+    thing.really_destroy!
     flash[:alert] = thing.thing_name + "を削除しました。"
     redirect_to user_path(current_user)
   end

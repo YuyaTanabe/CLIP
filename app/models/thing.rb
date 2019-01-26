@@ -6,7 +6,10 @@ class Thing < ApplicationRecord
   # ラジオボタン
   enum public_status: {公開しない:1, 公開する:2}
 
-# バリデーション
+  # バリデーション
   validates :thing_name, presence: true
   validates :thing_memo, length: { maximum: 2000 }
+
+  # paranoia
+  acts_as_paranoid
 end

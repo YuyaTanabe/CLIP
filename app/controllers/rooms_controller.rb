@@ -46,7 +46,7 @@ class RoomsController < ApplicationController
 
   def destroy
     room = Room.find(params[:id])
-    room.destroy
+    room.really_destroy!
     flash[:alert] = "チャットルームを削除しました"
     redirect_to user_path(current_user)
   end

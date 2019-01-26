@@ -39,16 +39,16 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:id])
     to_user = User.find(friendship.to_user_id)
     friendship_back = Friendship.find_by(from_user_id: to_user.id, to_user_id: current_user.id)
-    friendship.destroy
-    friendship_back.destroy
+    friendship.really_destroy!
+    friendship_back.really_destroy!
     # フレンド関係を削除したときに、それに基づくチャットルームも削除する
     if Room.where(friendship_id: friendship.id).exists?
       first_room = Room.find_by(friendship_id: friendship.id)
-      first_room.destroy
+      first_room.really_destroy!
     else
       Room.where(friendship_id: friendship_back.id).exists?
       second_room = Room.find_by(friendship_id: friendship_back.id)
-      second_room.destroy
+      second_room.really_destroy!
     end
     # フレンド関係を削除したときに、それに基づくチャットルームも削除する
     flash[:notice] = to_user.user_name + "とのフレンド関係を解消しました。"

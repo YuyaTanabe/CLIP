@@ -98,10 +98,10 @@ var bottomBtn=$('#pageBottom');
 
 
 $(function(){
-  $(".alert-danger").fadeOut(6000);
+  $(".alert-danger").fadeOut(2000);
 });
 
 $(function(){
-  $(".alert-success").fadeOut(6000);
+  $(".alert-success").fadeOut(2000);
 });
 

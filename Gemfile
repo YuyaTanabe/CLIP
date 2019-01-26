@@ -86,4 +86,6 @@ gem 'rails-i18n'
 # font-awesomeの利用
 gem "font-awesome-rails"
 
+# 論理削除
+gem 'paranoia'
 

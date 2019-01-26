@@ -23,13 +23,16 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
-# バリデーション
+  # バリデーション
   validates :user_name, presence: true
   validates :user_name, length: { minimum: 2 }
   validates :user_name, length: { maximum: 10 }
   validates :friend_id, presence: true, uniqueness: true
   validates :friend_id, length: { minimum: 4 }
   validates :friend_id, length: { maximum: 10 }
+
+  # paranoia
+  acts_as_paranoid
 
 
   # user(=入力したフレンドIDを持つユーザー)とすでにフレンド関係にあるかの確認

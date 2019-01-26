@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   get 'admins/top' => 'admins#top'
 
+  get 'admins/users/unsubscribed' => 'admins/users#unsubscribed'
+  get 'admins/users/:id/unsubscribed_show/' => 'admins/users#unsubscribed_show', as: 'unsubscribed_show_user'
+  patch 'admins/users/:id/' => 'admins/users#revive_account', as: 'revive_account_user'
+
   namespace :admins do
     resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :things, only: [:index, :show, :edit, :update, :destroy]
