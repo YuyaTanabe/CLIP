@@ -1,7 +1,7 @@
 
-<div class="user_friendship_index col-md-4 col-md-offset-4" style="margin-top: 60px; margin-bottom: 20px;">
+<div class="user_friendship_index col-md-4 col-md-offset-4" style="margin-top: 40px; margin-bottom: 20px;">
   <div class="title" style="">
-    <p style="font-size: 40px; text-align: center"><strong>Friends</strong></p>
+    <p style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #98fb98; -webkit-text-stroke: 0.2px black; font-style: italic;"><strong>Friends</strong></p>
   </div>
   <% @friendship.each do |friendship| %>
     <% to_user = User.find(friendship.to_user_id) %>

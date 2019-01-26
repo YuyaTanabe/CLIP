@@ -115,7 +115,7 @@
         <% @messages.each do |m| %>
           <% if m.user_id == current_user.id %>
             <h4 class="text-left">
-              <div class="text-area alert alert-success col-xs-12" style="word-wrap: break-word; padding: 5px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
+              <div class="text-area alert alert-warning col-xs-12" style="word-wrap: break-word; padding: 5px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
                 <div class="col-xs-1" style=" padding-left: 14px; padding-bottom: 10px;">
                   <div class="user_image" style="padding-top: 10px;">
                     <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
@@ -124,7 +124,7 @@
                 <div class="col-xs-11" style="padding-right: 0px;">
                   <div class="col-xs-12" style="padding: 0px;">
                     <div class="col-xs-9" style="padding: 0px;">
-                      <small><strong style="color: green;"><%= m.user.user_name %></strong></small>
+                      <small><strong style="color: orange;"><%= m.user.user_name %></strong></small>
                     </div>
                     <div class="col-xs-3" style="padding: 0px; padding-bottom: 5px;">
                       <small>
