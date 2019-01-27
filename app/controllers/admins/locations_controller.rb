@@ -2,7 +2,7 @@ class Admins::LocationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @locations = Location.all
+    @locations = Location.all.page(params[:page]).per(20)
   end
 
   def show

@@ -46,7 +46,7 @@
                   <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                     <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                   </div>
-                  <div class="location_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                  <div class="location_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                     <%= location.location_name %>
                   </div>
                   <div class="location_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 0px; font-size: 16px; color: black;">
@@ -60,13 +60,16 @@
                   <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                     <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                   </div>
-                  <div class="location_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                  <div class="location_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                     <%= location.location_name %>
                   </div>
                 <% end %>
               </div>
             <% end %>
           <% end %>
+          <div class="" style="text-align: center; width: 100%;">
+            <%= paginate @location, class:"paginate" %>
+          </div>
         </div>
       </div>
       <div class="right col-md-6" style="padding: 0px;">
@@ -81,7 +84,7 @@
                   <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                     <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                   </div>
-                  <div class="thing_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                  <div class="thing_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                     <%= thing.thing_name %>
                   </div>
                   <div class="thing_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 0px; font-size: 16px; color: black;">
@@ -95,13 +98,16 @@
                   <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                     <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                   </div>
-                  <div class="thing_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+                  <div class="thing_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                     <%= thing.thing_name %>
                   </div>
                 <% end %>
               </div>
             <% end %>
           <% end %>
+          <div class="" style="text-align: center; width: 100%;">
+            <%= paginate @thing, class:"paginate" %>
+          </div>
         </div>
       </div>
     </div>

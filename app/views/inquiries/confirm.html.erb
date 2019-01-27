@@ -1,32 +1,38 @@
 
-<div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 40px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
-<h2 style="margin-top: 5px; text-align: center;"><strong>問い合わせフォーム確認</strong></h2>
-
-<%= simple_form_for @inquiry, :url => inquiries_done_path do |f| %>
-  <div>
-    <div>
-      <strong>名前</strong>
-      <p>
-        <%= f.hidden_field :name %>
-        <%= @inquiry.name %>
-      </p>
+<div class="inquiry_confirm col-md-6 col-md-offset-3">
+  <%= form_for @inquiry, :url => inquiries_done_path do |f| %>
+    <div class="well well-compact col-md-12" style="margin-top: 40px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
+      <h3 style="margin-top: 5px; text-align: center; margin-bottom: 20px;"><strong>問い合わせフォーム 内容確認</strong></h3>
+      <div>
+        <div>
+          <strong>・お名前</strong>
+          <p>
+            <%= f.hidden_field :name %>
+            <%= @inquiry.name %>
+          </p>
+        </div>
+        <br>
+        <div>
+          <strong>・メールアドレス</strong>
+          <p>
+            <%= f.hidden_field :email %>
+            <%= @inquiry.email %>
+          </p>
+        </div>
+        <br>
+        <div>
+          <strong>・問い合わせ内容</strong>
+          <p>
+            <%= f.hidden_field :content %>
+            <div class="well well-compact" style="background-color: #ffffff">
+              <%= simple_format(@inquiry.content) %>
+            </div>
+          </p>
+        </div>
+        <%= f.submit "送信する", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn btn-primary col-md-4 col-md-offset-4" %>
+      </div>
     </div>
-    <div>
-      <strong>メールアドレス</strong>
-      <p>
-        <%= f.hidden_field :email %>
-        <%= @inquiry.email %>
-      </p>
-    </div>
-    <div>
-      <strong>内容</strong>
-      <p>
-        <%= f.hidden_field :content %>
-        <%= simple_format(@inquiry.content) %>
-      </p>
-    </div>
-    <%= f.button :submit, "送信する", :class => "btn-primary col-md-4 col-md-offset-4" %>
-  </div>
-<% end %>
-
+    <%= f.submit '戻る', name: 'back', style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-warning col-md-2
+   col-md-offset-5" %>
+  <% end %>
 </div>

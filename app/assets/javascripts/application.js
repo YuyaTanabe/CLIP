@@ -99,10 +99,10 @@ var bottomBtn=$('#pageBottom');
 
 // フラッシュメッセージの消える時間
 $(function(){
-  $(".alert-danger").fadeOut(2000);
+  $(".alert-danger").fadeOut(6000);
 });
 
 $(function(){
-  $(".alert-success").fadeOut(2000);
+  $(".alert-success").fadeOut(6000);
 });
 

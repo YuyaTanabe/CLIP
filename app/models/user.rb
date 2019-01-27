@@ -26,10 +26,10 @@ class User < ApplicationRecord
   # バリデーション
   validates :user_name, presence: true
   validates :user_name, length: { minimum: 2 }
-  validates :user_name, length: { maximum: 10 }
+  validates :user_name, length: { maximum: 20 }
   validates :friend_id, presence: true, uniqueness: true
   validates :friend_id, length: { minimum: 4 }
-  validates :friend_id, length: { maximum: 10 }
+  validates :friend_id, length: { maximum: 20 }
 
   # paranoia
   acts_as_paranoid

@@ -1,9 +1,9 @@
 
 <div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 40px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
-<h2 style="margin-top: 5px; text-align: center;"><strong>問い合わせフォーム</strong></h2>
+<h3 style="margin-top: 5px; text-align: center; margin-bottom: 20px;"><strong>問い合わせフォーム</strong></h3>
 
   <%= simple_form_for(@inquiry, url: { action: :confirm }) do |f| %>
-    <%= f.input :name, label: "名前", placeholder: "20文字以内" %>
+    <%= f.input :name, label: "お名前", placeholder: "20文字以内" %>
     <%= f.input :email, label: "メールアドレス", placeholder: "30文字以内" %>
     <%= f.input :content, size:"30x10", as: :text, label: "問い合わせ内容", placeholder: "2000文字以内" %>
     <br>
@@ -16,6 +16,6 @@
     上記の記入をお願いします。なお、復元には時間がかかる場合がございます。
     <br>
     <br>
-    <%= f.button :submit, "確認画面へ", :class => "btn-primary col-md-4 col-md-offset-4" %>
+    <%= f.button :submit, "確認画面へ", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", :class => "btn-primary col-md-4 col-md-offset-4" %>
   <% end %>
 </div>

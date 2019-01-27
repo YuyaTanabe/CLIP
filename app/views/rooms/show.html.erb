@@ -13,42 +13,55 @@
 <!-- ページ最下部へ移動するボタン -->
 <p id="pageBottom"><a href="#"><i class="fa fa-chevron-down"></i></a></p>
 
-<div class='room_show col-xs-12' style="margin-top: 60px;">
+<div class='room_show col-xs-12' style="margin-top: 20px;">
 <!-- 左側 -->
-  <div class="col-xs-3 chat_list" style="margin-top: 30px; padding: 0px;">
+  <div class="col-xs-3 chat_list" style="margin-top: 0px; padding: 0px;">
     <div class="chat_title">
       <% invited_user = User.find(@room.invited_user_id) %>
       <% invite_user = User.find(@room.invite_user_id) %>
       <% if @room.invited_user_id == current_user.id %>
-        <div class="user_friend" style="height: 60px; margin-bottom: 20px; background-color: #dbedff; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
+        <div class="user_friend" style="height: 60px; margin-bottom: 20px; background-color: #dbedff; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);">
           <%= link_to user_path(invite_user.id), class:"" do %>
             <div class="friend_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
               <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
             </div>
-            <div class="friend_name col-md-10" style="height: 60px; padding-top: 17px; padding-bottom: 15px; padding-left: 30px; font-size: 20px; color: blue;">
-              <%= invite_user.user_name %> <span class="glyphicon glyphicon-user"></span>
+            <div class="friend_name col-md-10" style="height: 60px; padding-top: 17px; padding-bottom: 15px; padding-left: 30px; font-size: 20px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+              <span class="glyphicon glyphicon-user"></span> <%= invite_user.user_name %>
             </div>
           <% end %>
         </div>
       <% elsif @room.invite_user_id == current_user.id %>
-        <div class="user_friend" style="height: 60px; margin-bottom: 20px; background-color: #dbedff; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
+        <div class="user_friend" style="height: 60px; margin-bottom: 20px; background-color: #dbedff; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);">
           <%= link_to user_path(invited_user.id), class:"" do %>
             <div class="friend_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
               <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
             </div>
-            <div class="friend_name col-md-10" style="height: 60px; padding-top: 17px; padding-bottom: 15px; padding-left: 30px; font-size: 20px; color: blue;">
-              <%= invited_user.user_name %> <span class="glyphicon glyphicon-user"></span>
+            <div class="friend_name col-md-10" style="height: 60px; padding-top: 17px; padding-bottom: 15px; padding-left: 30px; font-size: 20px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+              <span class="glyphicon glyphicon-user"></span> <%= invited_user.user_name %>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
 
-
-    <div class="title col-xs-6 col-xs-offset-3" style="">
-      <p style="font-size: 16px; text-align: center; border-radius: 10px; box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7); background-color: rgba( 230, 230, 250, 0.8 )"><strong>チャットリスト</strong></p>
+    <div class="chat_form col-xs-12" style="padding: 0px;">
+      <%= form_for @message do |f| %>
+      <div style="box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);">
+        <%= f.text_area :content, class:"form-control", size:"30x4", placeholder:"メッセージを入力して下さい" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+      </div>
+        <div class="text-buttom">
+          <input type="submit" name="commit" value="メッセージを投稿する" class="btn btn-warning col-xs-12" data-disable-with="投稿する" style="box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin-top: 5px">
+        </div>
+      <% end %>
     </div>
-    <div class="scr chat_index well" style="margin-bottom: 100px; background-color: #ffd0cc;; border-radius: 10px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 230, 230, 250, 0.8 )">
+
+    <div class="title col-xs-12" style="padding: 0px;">
+      <p style="margin-top: 35px; margin-bottom: 3px; font-size: 25px; text-align: center; color: black; text-shadow: 3px 3px 3px #000000; color: #dbedff; -webkit-text-stroke: 0.2px black;">
+        <strong>Chat list</strong>
+      </p>
+    </div>
+    <div class="scr chat_index well" style="margin-bottom: 20px; background-color: #ffd0cc;; border-radius: 10px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); background-color: rgba( 230, 230, 250, 0.8 )">
       <% @room_invite_user_c.each do |room| %>
         <% invited_user = User.find(room.invited_user_id) %>
         <% if @room.invited_user_id == room.invited_user_id %>
@@ -57,8 +70,8 @@
               <div class="friend_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                 <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
               </div>
-              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: blue;">
-                <%= invited_user.user_name %> <span class="glyphicon glyphicon-user"></span>
+              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                <span class="glyphicon glyphicon-user"></span> <%= invited_user.user_name %>
               </div>
             <% end %>
           </div>
@@ -68,7 +81,7 @@
               <div class="friend_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                 <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
               </div>
-              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: black;">
+              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                 <%= invited_user.user_name %>
               </div>
             <% end %>
@@ -83,8 +96,8 @@
               <div class="friend_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                 <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
               </div>
-              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: blue;">
-                <%= invite_user.user_name %> <span class="glyphicon glyphicon-user"></span>
+              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                <span class="glyphicon glyphicon-user"></span> <%= invite_user.user_name %>
               </div>
             <% end %>
           </div>
@@ -94,7 +107,7 @@
               <div class="friend_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                 <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
               </div>
-              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: black;">
+              <div class="friend_name col-md-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                 <%= invite_user.user_name %>
               </div>
             <% end %>
@@ -105,7 +118,6 @@
   </div>
 <!-- /左側 -->
 
-
 <!-- 右側 -->
   <div class="col-xs-3">
   </div>
@@ -115,7 +127,7 @@
         <% @messages.each do |m| %>
           <% if m.user_id == current_user.id %>
             <h4 class="text-left">
-              <div class="text-area alert alert-warning col-xs-12" style="word-wrap: break-word; padding: 5px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
+              <div class="text-area alert alert-warning col-xs-12" style="word-wrap: break-word; padding: 5px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin-bottom: 10px;">
                 <div class="col-xs-1" style=" padding-left: 14px; padding-bottom: 10px;">
                   <div class="user_image" style="padding-top: 10px;">
                     <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
@@ -142,7 +154,7 @@
             </h4>
           <% else %>
             <h4 class="text-left">
-              <div class="text-area alert alert-info col-xs-12" style="word-wrap: break-word; padding: 5px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
+              <div class="text-area alert alert-info col-xs-12" style="word-wrap: break-word; padding: 5px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin-bottom: 10px;">
                 <div class="col-xs-1" style=" padding-left: 14px; padding-bottom: 10px;">
                   <div class="user_image" style="padding-top: 10px;">
                     <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
@@ -174,29 +186,20 @@
         <br>
       <% end %>
     </div>
-    <!-- <hr class="col-xs-12"> -->
-    <div class="chat_form col-xs-12" style="padding: 0px;">
-      <%= form_for @message do |f| %>
-      <div style="box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
-        <%= f.text_area :content, class:"form-control", size:"30x4", placeholder:"メッセージを入力して下さい" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-      </div>
-        <br>
-        <div class="text-buttom">
-          <input type="submit" name="commit" value="投稿する" class="btn btn-warning col-xs-2 col-xs-offset-5" data-disable-with="投稿する" style="box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);">
-        </div>
-      <% end %>
+    <div class="" style="text-align: center; width: 100%;">
+      <%= paginate @messages, class:"paginate" %>
     </div>
+
   </div>
 <!-- /右側 -->
 </div>
 
 <!-- このページへ、ページ遷移・ページリロードするとページ最下部に移動する -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function() {
     $('body,html').animate({
     scrollTop: $(document).height()},1);
   });
-</script>
+</script> -->
 
 

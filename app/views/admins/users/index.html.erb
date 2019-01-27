@@ -12,10 +12,13 @@
         <div class="user_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
           <%= attachment_image_tag user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
         </div>
-        <div class="user_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black;">
+        <div class="user_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
           <%= user.user_name %>
         </div>
       <% end %>
     </div>
   <% end %>
+  <div class="" style="text-align: center; width: 100%;">
+    <%= paginate @users, class:"paginate" %>
+  </div>
 </div>

@@ -89,6 +89,9 @@ gem "font-awesome-rails"
 # 論理削除
 gem 'paranoia'
 
+# フォームデザイン
 gem 'simple_form'
 
+# ページング
+gem 'kaminari'
 

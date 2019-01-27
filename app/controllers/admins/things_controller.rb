@@ -2,7 +2,7 @@ class Admins::ThingsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @things = Thing.all
+    @things = Thing.all.page(params[:page]).per(20)
   end
 
   def show

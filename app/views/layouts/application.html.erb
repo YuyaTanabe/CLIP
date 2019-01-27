@@ -52,10 +52,12 @@
         <div class='row'>
 
       <% if notice %>
-        <p class="validation alert alert-success col-xs-6 col-xs-offset-3" style="text-align: center; margin-top: 20px; margin-bottom: 0px;" ><%= notice %></p>
+        <span class="flash alert alert-success col-xs-12"><%= notice %>
+        </span>
       <% end %>
       <% if alert %>
-        <p class="validation alert alert-danger col-xs-6 col-xs-offset-3" style="text-align: center; margin-top: 20px; margin-bottom: 0px;" ><%= alert %></p>
+        <span class="flash alert alert-danger col-xs-12"><%= alert %>
+        </span>
       <% end %>
 
           <%= yield %>

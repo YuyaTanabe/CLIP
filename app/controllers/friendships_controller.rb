@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @friendship = Friendship.where(from_user_id: current_user.id)
+    @friendship = Friendship.where(from_user_id: current_user.id).page(params[:page]).per(20)
   end
 
   def new

@@ -2,24 +2,20 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    if user_signed_in?
-      @room = Room.find(params[:id])
-      @friendship = Friendship.where(from_user_id: current_user.id)
+    @room = Room.find(params[:id])
+    @friendship = Friendship.where(from_user_id: current_user.id)
 
-      @room_invite_user_c = Room.where(invite_user_id: current_user.id)
-      @room_invited_user_c = Room.where(invited_user_id: current_user.id)
+    @room_invite_user_c = Room.where(invite_user_id: current_user.id)
+    @room_invited_user_c = Room.where(invited_user_id: current_user.id)
 
-      if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-        @messages = @room.messages
-        @message = Message.new
-        @entries = @room.entries
-      else
-        @user = User.find_by(id: current_user.id)
-        redirect_to user_path(@user.id)
-        flash[:alert] = "そのページへは行けません"
-      end
+    if Entry.where(user_id: current_user.id, room_id: @room.id).present?
+      @messages = @room.messages.order(created_at: :desc).page(params[:page]).per(20)
+      @message = Message.new
+      @entries = @room.entries
     else
-      redirect_to root_path
+      @user = User.find_by(id: current_user.id)
+      redirect_to user_path(@user.id)
+      flash[:alert] = "そのページへは行けません"
     end
   end
 
