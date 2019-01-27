@@ -31,6 +31,14 @@ ja:
         thing_memo: "メモ"
         public_status: "公開ステータス"
         user_id: "ユーザーID"
+  activemodel:
+    models:
+      inquiry: "申請フォーム"
+    attributes:
+      inquiry:
+        name: "名前"
+        email: "Eメールアドレス"
+        content: "問い合わせ内容"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

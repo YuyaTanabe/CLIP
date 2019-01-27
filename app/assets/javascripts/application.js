@@ -97,6 +97,7 @@ var bottomBtn=$('#pageBottom');
 });
 
 
+// フラッシュメッセージの消える時間
 $(function(){
   $(".alert-danger").fadeOut(2000);
 });

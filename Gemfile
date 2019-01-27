@@ -89,3 +89,6 @@ gem "font-awesome-rails"
 # 論理削除
 gem 'paranoia'
 
+gem 'simple_form'
+
+

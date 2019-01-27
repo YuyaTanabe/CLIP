@@ -40,5 +40,9 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create, :edit, :update, :destroy]
 
+  get  'inquiries/index' =>'inquiries#index'
+  post 'inquiries/confirm' => 'inquiries#confirm'
+  post 'inquiries/done' => 'inquiries#done'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

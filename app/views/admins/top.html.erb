@@ -1,27 +1,36 @@
 
-<div class="admin_top col-md-12" style="margin-top: 150px; margin-bottom: 20px;">
-  <div class="admin_top_left col-md-4">
-    <div class="admin_top_users col-md-10 col-md-offset-1" style="height: 300px; padding: 0px;">
+<div class="admin_top col-md-12" style="margin-top: 40px;">
+  <div class="admin_top_left col-md-6">
+    <div class="admin_top_users col-md-10 col-md-offset-1" style="padding: 0px;">
       <%= link_to admins_users_path, class:"" do %>
-        <div class="users_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; float: left; font-size: 60px; text-align: center;">
+        <div class="users_string col-md-12" style="height: 240px; padding: 70px 20px 50px 20px; font-size: 60px; text-align: center;">
           Users
         </div>
       <% end %>
     </div>
   </div>
-  <div class="admin_top_center col-md-4">
-    <div class="admin_top_locations col-md-10 col-md-offset-1" style="height: 300px; padding: 0px;">
+  <div class="admin_top_right col-md-6">
+    <div class="admin_top_unsubscribed_users col-md-10 col-md-offset-1" style="padding: 0px;">
+      <%= link_to admins_users_unsubscribed_path, class:"" do %>
+        <div class="unsubscribed_users_string col-md-12" style="height: 240px; padding: 35px 20px 50px 20px; font-size: 60px; text-align: center;">
+          Unsubscribed Users
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="admin_bottom_left col-md-6">
+    <div class="admin_top_locations col-md-10 col-md-offset-1" style="padding: 0px; margin-top: 50px;">
       <%= link_to admins_locations_path, class:"" do %>
-        <div class="location_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; float: left; font-size: 60px; text-align: center;">
+        <div class="location_string col-md-12" style="height: 240px; padding: 70px 20px 50px 20px; font-size: 60px; text-align: center;">
           locations
         </div>
       <% end %>
     </div>
   </div>
-  <div class="admin_top_right col-md-4">
-    <div class="admin_top_things col-md-10 col-md-offset-1" style="height: 300px; padding: 0px;">
+  <div class="admin_bottom_right col-md-6">
+    <div class="admin_top_things col-md-10 col-md-offset-1" style="padding: 0px; margin-top: 50px;">
       <%= link_to admins_things_path, class:"" do %>
-        <div class="thing_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; float: left; font-size: 60px; text-align: center;">
+        <div class="thing_string col-md-12" style="height: 240px; padding: 70px 20px 50px 20px; font-size: 60px; text-align: center;">
           Objects
         </div>
       <% end %>

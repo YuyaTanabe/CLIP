@@ -1,7 +1,7 @@
 
 <p id="pageBottom"><a href="#"><i class="fa fa-chevron-down"></i></a></p>
 
-<div class='room_show col-xs-12' style="margin-top: 40px; padding: 0px;">
+<div class='room_show col-xs-12' style="margin-top: 30px; padding: 0px;">
   <div class="user_profile well well-compact col-md-3" style="border-radius: 20px; box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.7);">
     <div class="user_image col-md-12" style="margin-top: 20px; margin-bottom: 20px; padding-left: 28px; padding-right: 28px;">
       <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
@@ -44,12 +44,12 @@
             <%= fields_for @entry do |e| %>
               <%= e.hidden_field :user_id, :value => @user.id %>
             <% end %>
-          <%= f.submit "チャット", class:"btn-lg btn-warning col-md-12 glyphicon glyphicon-pencil" %>
+          <%= f.submit "チャット", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-warning col-md-12" %>
         <% end %>
       </div>
       <br>
       <div class="friend_delete col-md-12" style="padding: 20px; text-align: center;">
-        <%= link_to friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", class:"btn-lg btn-danger col-md-12" , method: :delete do %>
+        <%= link_to friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-danger col-md-12" , method: :delete do %>
           <span class="glyphicon glyphicon-trash"></span> フレンド解消 <span class="glyphicon glyphicon-trash"></span>
         <% end %>
       </div>
@@ -57,13 +57,13 @@
 
     <% if current_user.id == @user.id %>
       <div class='user_edit col-md-12' style="padding: 20px;">
-        <%= link_to edit_user_path(@user.id), class:"btn-lg btn-success", method: :get do %>
+        <%= link_to edit_user_path(@user.id), style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-success", method: :get do %>
           <span class="glyphicon glyphicon-wrench"></span> アカウント編集 <span class="glyphicon glyphicon-wrench"></span>
         <% end %>
       </div>
       <br>
       <div class='user_delete col-md-12' style="padding: 20px;">
-        <%= link_to user_path(@user.id), "data-confirm" => "本当にアカウントを削除しますか?", class:"btn-lg btn-danger", method: :delete do %>
+        <%= link_to user_path(@user.id), "data-confirm" => "本当にアカウントを削除しますか?", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-danger", method: :delete do %>
           <span class="glyphicon glyphicon-trash"></span> アカウント削除 <span class="glyphicon glyphicon-trash"></span>
         <% end %>
       </div>
@@ -75,8 +75,8 @@
       <div class="location_and_thing clearfix">
         <div class="left col-md-6" style="padding: 0px;">
           <div class="user_location_index col-md-12" style="margin-bottom: 20px;">
-            <div class="thing_title" style="">
-              <p style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black; font-style: italic;"><strong>Locations</strong></p>
+            <div class="thing_title" style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black; font-style: italic;">
+              <strong>Locations</strong>
             </div>
             <% @location.each do |location| %>
               <% if location.public_status == "公開する" %>
@@ -110,8 +110,8 @@
         </div>
         <div class="right col-md-6" style="padding: 0px;">
           <div class="user_thing_index col-md-12" style="margin-bottom: 20px;">
-            <div class="thing_title" style="">
-              <p style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black; font-style: italic;"><strong>Objects</strong></p>
+            <div class="thing_title" style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black; font-style: italic;">
+              <strong>Objects</strong>
             </div>
             <% @thing.each do |thing| %>
               <% if thing.public_status == "公開する" %>

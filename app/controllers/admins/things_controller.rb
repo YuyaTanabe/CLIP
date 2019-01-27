@@ -6,18 +6,18 @@ class Admins::ThingsController < ApplicationController
   end
 
   def show
-    @thing = Thing.find(params[:id])
+    @thing = Thing.with_deleted.find(params[:id])
   end
 
   def edit
-    @thing = Thing.find(params[:id])
+    @thing = Thing.with_deleted.find(params[:id])
   end
 
   def update
-    @thing = Thing.find(params[:id])
+    @thing = Thing.with_deleted.find(params[:id])
     if @thing.update(thing_params)
       flash[:notice] = @thing.thing_name + "を編集しました。"
-      redirect_to admins_things_path
+      redirect_to admins_thing_path(@thing.id)
     else
       flash[:alert] = "編集できませんでした。"
       render "edit"
@@ -25,7 +25,7 @@ class Admins::ThingsController < ApplicationController
   end
 
   def destroy
-    thing = Thing.find(params[:id])
+    thing = Thing.with_deleted.find(params[:id])
     thing.really_destroy!
     flash[:alert] = thing.thing_name + "を削除しました。"
     redirect_to admins_things_path

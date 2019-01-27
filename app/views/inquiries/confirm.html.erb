@@ -1,0 +1,32 @@
+
+<div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 40px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
+<h2 style="margin-top: 5px; text-align: center;"><strong>問い合わせフォーム確認</strong></h2>
+
+<%= simple_form_for @inquiry, :url => inquiries_done_path do |f| %>
+  <div>
+    <div>
+      <strong>名前</strong>
+      <p>
+        <%= f.hidden_field :name %>
+        <%= @inquiry.name %>
+      </p>
+    </div>
+    <div>
+      <strong>メールアドレス</strong>
+      <p>
+        <%= f.hidden_field :email %>
+        <%= @inquiry.email %>
+      </p>
+    </div>
+    <div>
+      <strong>内容</strong>
+      <p>
+        <%= f.hidden_field :content %>
+        <%= simple_format(@inquiry.content) %>
+      </p>
+    </div>
+    <%= f.button :submit, "送信する", :class => "btn-primary col-md-4 col-md-offset-4" %>
+  </div>
+<% end %>
+
+</div>

@@ -1,5 +1,5 @@
 
-<div class="well well-compact col-md-8 col-md-offset-2" style="margin-top: 50px; border-radius: 20px;">
+<div class="well well-compact col-md-8 col-md-offset-2" style="margin-top: 50px; border-radius: 20px; box-shadow: 7px 7px 7px 7px rgba(0,0,0,0.7);">
   <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
     <strong><%= @thing.thing_name %></strong>
   </div>
@@ -45,12 +45,12 @@
 
 <div class="thing_edit_delete" style="text-align: center">
   <div class='thing_edit col-md-6' style="margin: 30px auto">
-    <%= link_to edit_admins_thing_path(@thing.id), class:"btn-lg btn-success", method: :get do %>
+    <%= link_to edit_admins_thing_path(@thing.id), style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-success", method: :get do %>
       <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
     <% end %>
   </div>
   <div class='thing_delete col-md-6' style="margin: 30px auto">
-    <%= link_to admins_thing_path(@thing.id), "data-confirm" => "管理者権限で、本当に削除しますか?", class:"btn-lg btn-danger", method: :delete do %>
+    <%= link_to admins_thing_path(@thing.id), "data-confirm" => "管理者権限で、本当に削除しますか?", style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-danger", method: :delete do %>
       <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
     <% end %>
   </div>

@@ -6,18 +6,18 @@ class Admins::LocationsController < ApplicationController
   end
 
   def show
-    @location = Location.find(params[:id])
+    @location = Location.with_deleted.find(params[:id])
   end
 
   def edit
-    @location = Location.find(params[:id])
+    @location = Location.with_deleted.find(params[:id])
   end
 
   def update
-    @location = Location.find(params[:id])
+    @location = Location.with_deleted.find(params[:id])
     if @location.update(location_params)
       flash[:notice] = @location.location_name + "を編集しました。"
-      redirect_to admins_locations_path
+      redirect_to admins_location_path(@location.id)
     else
       flash[:alert] = "編集できませんでした。"
       render "edit"
@@ -25,7 +25,7 @@ class Admins::LocationsController < ApplicationController
   end
 
   def destroy
-    location = Location.find(params[:id])
+    location = Location.with_deleted.find(params[:id])
     location.really_destroy!
     redirect_to admins_locations_path
     flash[:alert] = location.location_name + "を削除しました。"

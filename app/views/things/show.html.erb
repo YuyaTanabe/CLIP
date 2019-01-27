@@ -45,15 +45,16 @@
   </div>
 </div>
 
+
 <% if current_user.id == @thing.user_id %>
   <div class="thing_edit_delete" style="text-align: center">
-    <div class='thing_edit col-md-6' style="margin: 30px auto">
-      <%= link_to edit_thing_path(@thing.id), class:"btn-lg btn-success", method: :get do %>
+    <div class='thing_edit col-md-6' style="margin: 30px auto;">
+      <%= link_to edit_thing_path(@thing.id), style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-success", method: :get do %>
         <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
       <% end %>
     </div>
     <div class='thing_delete col-md-6' style="margin: 30px auto">
-      <%= link_to thing_path(@thing.id), "data-confirm" => "本当に消しますか?", class:"btn-lg btn-danger", method: :delete do %>
+      <%= link_to thing_path(@thing.id), "data-confirm" => "本当に消しますか?", style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-danger", method: :delete do %>
         <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
       <% end %>
     </div>
