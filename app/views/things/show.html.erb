@@ -1,45 +1,43 @@
 
-<div class="well well-compact col-md-8 col-md-offset-2" style="margin-top: 50px; border-radius: 20px; box-shadow: 7px 7px 7px 7px rgba(0,0,0,0.7);">
-  <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
+<div class="thing_show row well well-compact" style="margin-top: 30px; border-radius: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.7);">
+  <div class="field col-xs-12" style="margin-bottom: 20px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
     <strong><%= @thing.thing_name %></strong>
   </div>
   <br>
   <br>
   <div class="thing_info">
-    <div class="thing_image col-md-5" style="margin-top: 40px; margin-bottom: 30px; padding-left: 25px; text-align: center;">
+    <div class="thing_image col-sm-5" style="padding-left: 30px; padding-bottom: 40px;">
       <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "250x250" %>
     </div>
-    <div class="thing_detail col-md-7" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
-      <div class="thing_url" style="word-wrap: break-word;">
-        <p style=""><strong>・URL</strong></p>
-        <P><%= text_url_to_link(h(@thing.thing_url)).html_safe %></p>
+    <div class="thing_detail col-sm-7" style="margin-top: 0px; margin-bottom: 10px; font-size: 16px;">
+      <div class="thing_url col-xs-12" style="padding-top: 0px; word-wrap: break-word;">
+        <p style="margin-bottom: 4px;"><strong>・URL</strong></p>
+        <P style="margin-bottom: 20px;"><%= text_url_to_link(h(@thing.thing_url)).html_safe %></p>
       </div>
-      <hr>
-      <div class="thing_memo" style="">
-        <p style=""><strong>・メモ</strong></p>
+      <div class="thing_memo col-xs-12" style="">
+        <p style="margin-bottom: 4px;"><strong>・メモ</strong></p>
         <% if @thing.thing_memo.blank? %>
-          まだメモはありません
+          <p style="margin-bottom: 20px;">まだメモはありません</p>
         <% else %>
           <div class="text-area alert alert-info" style="word-wrap: break-word;">
             <%= simple_format(@thing.thing_memo) %>
           </div>
         <% end %>
       </div>
-      <hr>
       <% if current_user.id == @thing.user_id %>
-        <% if @thing.public_status == "公開しない" %>
-          <div class="thing_private" style="word-wrap: break-word;">
-            <p style=""><strong>・公開ステータス</strong></p>
-            <p style="color: blue;"><%= @thing.public_status %></p>
-          </div>
-          <hr>
-        <% else %>
-          <div class="thing_pablic" style="word-wrap: break-word;">
-            <p style=""><strong>・公開ステータス</strong></p>
-            <p style="color: red;"><%= @thing.public_status %></p>
-          </div>
-          <hr>
-        <% end %>
+        <div class="thing_memo col-xs-12" style="">
+          <% if @thing.public_status == "公開しない" %>
+            <div class="thing_private" style="">
+              <p style="margin-bottom: 4px;"><strong>・公開ステータス</strong></p>
+              <p style="color: blue;"><%= @thing.public_status %></p>
+            </div>
+          <% else %>
+            <div class="thing_pablic" style="">
+              <p style="margin-bottom: 4px;"><strong>・公開ステータス</strong></p>
+              <p style="color: red;"><%= @thing.public_status %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -48,13 +46,13 @@
 
 <% if current_user.id == @thing.user_id %>
   <div class="thing_edit_delete" style="text-align: center">
-    <div class='thing_edit col-md-6' style="margin: 30px auto;">
-      <%= link_to edit_thing_path(@thing.id), style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-success", method: :get do %>
+    <div class='thing_edit col-xs-6' style="margin: 30px auto;">
+      <%= link_to edit_thing_path(@thing.id), style:"box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);", class:"btn-lg btn-success", method: :get do %>
         <span class="glyphicon glyphicon-wrench"></span> 編集 <span class="glyphicon glyphicon-wrench"></span>
       <% end %>
     </div>
-    <div class='thing_delete col-md-6' style="margin: 30px auto">
-      <%= link_to thing_path(@thing.id), "data-confirm" => "本当に消しますか?", style:"box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7);", class:"btn-lg btn-danger", method: :delete do %>
+    <div class='thing_delete col-xs-6' style="margin: 30px auto">
+      <%= link_to thing_path(@thing.id), "data-confirm" => "本当に消しますか?", style:"box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);", class:"btn-lg btn-danger", method: :delete do %>
         <span class="glyphicon glyphicon-trash"></span> 削除 <span class="glyphicon glyphicon-trash"></span>
       <% end %>
     </div>
@@ -63,6 +61,28 @@
 
 
 
+<style type="text/css">
+.thing_show {
+  width: 760px;
+  margin: 0 auto;
+}
+.thing_image {
+  margin-top: 20px;
+  padding-right: 0px;
+}
+
+@media screen and (max-width:768px) {
+  .thing_show {
+    width: 350px;
+    margin: 0 auto;
+  }
+  .thing_image {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+}
+</style>
 
 
 

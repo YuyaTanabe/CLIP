@@ -1,18 +1,18 @@
 
-<div class="user_clip col-md-12" style="margin-top: 150px; margin-bottom: 20px;">
+<div class="user_clip">
   <div class="clip_left col-md-6">
-    <div class="clip_location col-md-10 col-md-offset-1" style="height: 300px; padding: 0px; opacity: 0.8;">
+    <div class="clip_location col-md-10 col-md-offset-1">
       <%= link_to new_location_path, class:"" do %>
-        <div class="clip_location_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; font-size: 60px; text-align: center; text-shadow: 2px 2px 1px #000">
+        <div class="clip_location_string col-xs-12">
           Clip location
         </div>
       <% end %>
     </div>
   </div>
   <div class="clip_right col-md-6">
-    <div class="clip_thing col-md-10 col-md-offset-1" style="height: 300px; padding: 0px; opacity: 0.8;">
+    <div class="clip_thing col-md-10 col-md-offset-1">
       <%= link_to new_thing_path, class:"" do %>
-        <div class="clip_thing_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; font-size: 60px; text-align: center; text-shadow: 2px 2px 1px #000">
+        <div class="clip_thing_string col-xs-12">
           Clip object
         </div>
       <% end %>
@@ -20,3 +20,77 @@
   </div>
 </div>
 
+
+<style type="text/css">
+.user_clip {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+.clip_left {
+  margin-bottom: 100px;
+}
+.clip_location {
+  height: 300px;
+  padding: 0px;
+  opacity: 0.8;
+}
+.clip_location_string {
+  height: 300px;
+  padding: 100px 20px 120px 20px;
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 2px 2px 1px #000;
+}
+.clip_right {
+  margin-bottom: 100px;
+}
+.clip_thing {
+  height: 300px;
+  padding: 0px;
+  opacity: 0.8;
+}
+.clip_thing_string {
+  height: 300px;
+  padding: 100px 20px 120px 20px;
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 2px 2px 1px #000;
+}
+
+
+@media screen and (max-width:768px) {
+  .user_clip {
+    margin-top: 100px;
+    }
+  .clip_left {
+    margin-bottom: 20px;
+  }
+  .clip_location {
+    height: 150px;
+    padding: 0px;
+    opacity: 0.8;
+  }
+  .clip_location_string {
+    height: 150px;
+    padding: 30px 20px 120px 20px;
+    font-size: 55px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+  }
+  .clip_right {
+    margin-bottom: 20px;
+  }
+  .clip_thing {
+    height: 150px;
+    padding: 0px;
+    opacity: 0.8;
+  }
+  .clip_thing_string {
+    height: 150px;
+    padding: 30px 20px 120px 20px;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+  }
+}
+</style>

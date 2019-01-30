@@ -10,59 +10,51 @@
   </div>
 <% end %>
 
-<div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 30px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
-  <%= form_for @location, url: admins_location_path do |f| %>
-    <div class="col-md-12" style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 1px 1px 1px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black;">
-      <strong>Edit location</strong>
-    </div>
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <%= f.label :名前 %>
-      <%= f.text_field :location_name, class:"form-control" %>
-    </div>
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <div class="field col-md-7" style="margin-bottom: 0px; padding: 0px;">
+<div class="col-xs-12 edit_location_form">
+  <div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 30px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
+    <%= form_for @location, url: admins_location_path do |f| %>
+      <div class="col-xs-12" style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 1px 1px 1px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black;">
+        <strong>Edit location</strong>
+      </div>
+      <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+        <%= f.label :名前 %>
+        <%= f.text_field :location_name, class:"form-control" %>
+      </div>
+      <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
         <%= f.label :画像 %>
         <%= f.attachment_field :location_image, placeholder: "イメージ画像を選択" %>
       </div>
-      <div class="field col-md-5" style="margin-bottom: 0px;">
-        ↓↓ <%= f.label :変更前の画像 %> ↓↓
-        <div style="margin-bottom: 0px; padding-left: 30px;">
-          <%= attachment_image_tag @location, :location_image, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "60x60" %>
+      <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+        <%= f.label :最寄駅 %>
+        <%= f.text_field :station, class:"form-control"  %>
+      </div>
+      <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+        <%= f.label :関連 %><strong>URL</strong>
+        <%= f.text_field :location_url, class:"form-control"  %>
+      </div>
+      <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+        <%= f.label :メモ %><strong> （2000文字まで入力できます。）</strong>
+        <%= f.text_area :location_memo, class:"form-control", size:"30x6"  %>
+      </div>
+      <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
+        <%= f.label :地図登録したい地名 %>
+        <%= f.text_field :address, placeholder: "記入例　東京スカイツリー", class:"form-control"  %>
+      </div>
+      <div class="field col-xs-10 col-xs-offset-1" style="margin-bottom: 30px;">
+        <div class="col-xs-6" style="text-align: center">
+          <%= f.radio_button :public_status, :公開しない, checked: "checked" %>
+          <%= f.label :公開しない, class: "job_type_label" %>
+        </div>
+        <div class="col-xs-6" style="text-align: center">
+          <%= f.radio_button :public_status, :公開する %>
+          <%= f.label :公開する, class: "job_type_label" %>
         </div>
       </div>
-    </div>
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <%= f.label :最寄駅 %>
-      <%= f.text_field :station, class:"form-control"  %>
-    </div>
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <%= f.label :関連 %><strong>URL</strong>
-      <%= f.text_field :location_url, class:"form-control"  %>
-    </div>
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <%= f.label :メモ %><strong> （2000文字まで入力できます。）</strong>
-      <%= f.text_area :location_memo, class:"form-control", size:"30x6"  %>
-    </div>
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <%= f.label :地図登録したい地名 %>
-      <%= f.text_field :address, placeholder: "記入例　東京スカイツリー", class:"form-control"  %>
-    </div>
-
-    <div class="field col-md-10 col-md-offset-1" style="margin-bottom: 30px;">
-      <div class="col-md-6" style="text-align: center">
-        <%= f.radio_button :public_status, :公開しない, checked: "checked" %>
-        <%= f.label :公開しない, class: "job_type_label" %>
+      <div class="actions" style="text-align: center; margin-bottom: 20px;">
+        <%= f.submit '      変更を保存      ', "data-confirm" => "管理者権限で、本当に編集しますか?", class:"btn-lg btn-primary" %>
       </div>
-      <div class="col-md-6" style="text-align: center">
-        <%= f.radio_button :public_status, :公開する %>
-        <%= f.label :公開する, class: "job_type_label" %>
-      </div>
-    </div>
-
-    <div class="actions" style="text-align: center; margin-bottom: 20px;">
-      <%= f.submit '      変更を保存      ', "data-confirm" => "管理者権限で、本当に編集しますか?", class:"btn-lg btn-primary" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 

@@ -1,21 +1,96 @@
 
-<div class="top col-md-12" style="margin-top: 150px; margin-bottom: 20px;">
+<div class="top">
   <div class="top_left col-md-6">
-    <div class="top_sign_up col-md-10 col-md-offset-1" style="height: 300px; padding: 0px; opacity: 0.8;">
+    <div class="top_sign_up col-md-10 col-md-offset-1">
       <%= link_to new_user_registration_path, class:"" do %>
-        <div class="sign_up_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; font-size: 60px; text-align: center; text-shadow: 2px 2px 1px #000">
+        <div class="sign_up_string col-xs-12">
           Sign up
         </div>
       <% end %>
     </div>
   </div>
   <div class="top_right col-md-6">
-    <div class="top_login col-md-10 col-md-offset-1" style="height: 300px; padding: 0px; opacity: 0.8;">
+    <div class="top_login col-md-10 col-md-offset-1">
       <%= link_to new_user_session_path, class:"" do %>
-        <div class="login_string col-md-12" style="height: 300px; padding: 100px 20px 120px 20px; font-size: 60px; text-align: center;text-shadow: 2px 2px 1px #000">
+        <div class="login_string col-xs-12">
           Login
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+
+<style type="text/css">
+.top {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+.top_left {
+  margin-bottom: 100px;
+}
+.top_sign_up {
+  height: 300px;
+  padding: 0px;
+  opacity: 0.8;
+}
+.sign_up_string {
+  height: 300px;
+  padding: 100px 20px 120px 20px;
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 2px 2px 1px #000;
+}
+.top_right {
+  margin-bottom: 100px;
+}
+.top_login {
+  height: 300px;
+  padding: 0px;
+  opacity: 0.8;
+}
+.login_string {
+  height: 300px;
+  padding: 100px 20px 120px 20px;
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 2px 2px 1px #000;
+}
+
+
+@media screen and (max-width:768px) {
+  .top {
+    margin-top: 20px;
+    }
+  .top_left {
+    margin-bottom: 20px;
+  }
+  .top_sign_up {
+    height: 150px;
+    padding: 0px;
+    opacity: 0.8;
+  }
+  .sign_up_string {
+    height: 150px;
+    padding: 30px 20px 120px 20px;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+  }
+  .top_right {
+    margin-bottom: 20px;
+  }
+  .top_login {
+    height: 150px;
+    padding: 0px;
+    opacity: 0.8;
+  }
+  .login_string {
+    height: 150px;
+    padding: 30px 20px 120px 20px;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+  }
+}
+</style>

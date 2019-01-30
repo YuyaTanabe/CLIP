@@ -1,105 +1,107 @@
 
 <p id="pageBottom"><a href="#"><i class="fa fa-chevron-down"></i></a></p>
 
-<div class='room_show col-xs-12' style="margin-top: 30px; padding: 0px;">
-  <div class="user_profile well well-compact col-md-3" style="border-radius: 20px; box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.7);">
-    <div class="user_image col-md-12" style="margin-top: 20px; margin-bottom: 20px; padding-left: 28px; padding-right: 28px;">
-      <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "200x200" %>
-    </div>
-    <% if current_user.id == @user.id %>
-      <div class="user_detail col-md-12" style="margin-top: 10px; margin-bottom: 10px; font-size: 16px;">
-        <div class="user_name" style="">
-          <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
-          <p style="margin-bottom: 4px;"><%= @user.user_name %></p>
+<div class='user_show' style="padding: 0px;">
+  <div class="row" style="margin-bottom: 30px;">
+    <div class="user_profile row well well-compact" style="border-radius: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin: 0 auto;">
+      <div class="user_image col-sm-3" style="margin-top: 30px;">
+        <div class="col-xs-12" style="margin-bottom: 20px; padding-left: 0px;">
+          <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "150x150" %>
         </div>
-        <hr style="margin-top: 0px;">
-        <div class="email" style="">
-          <p style="margin-bottom: 4px;"><strong>・Eメールアドレス</strong></p>
-          <p style="margin-bottom: 4px;"><%= @user.email %></p>
-        </div>
-        <hr style="margin-top: 0px;">
-        <div class="friend_id" style="">
-          <p style="margin-bottom: 4px;"><strong>・フレンドID</strong></p>
-          <p style="margin-bottom: 4px;"><%= @user.friend_id %></p>
-        </div>
-        <hr style="margin-top: 0px; margin-bottom: 0px;">
       </div>
-    <% else %>
-      <div class="user_detail col-md-12" style="margin-top: 20px; margin-bottom: 10px; font-size: 16px;">
+      <div class="user_detail col-sm-6" style="margin-top: 10px; margin-bottom: 20px; font-size: 16px;">
         <div class="user_name" style="">
-          <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
-          <p style="margin-bottom: 4px;"><%= @user.user_name %></p>
+          <% if current_user.id == @user.id %>
+            <div class="user_name col-xs-12" style="">
+              <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
+              <p style="margin-bottom: 20px;"><%= @user.user_name %></p>
+            </div>
+            <div class="email col-xs-12" style="">
+              <p style="margin-bottom: 4px;"><strong>・Eメールアドレス</strong></p>
+              <p style="margin-bottom: 20px;"><%= @user.email %></p>
+            </div>
+            <div class="friend_id col-xs-12" style="">
+              <p style="margin-bottom: 4px;"><strong>・フレンドID</strong></p>
+              <p style="margin-bottom: 0px;"><%= @user.friend_id %></p>
+            </div>
+          <% else %>
+            <div class="user_name col-xs-12" style="margin-top: 20px;">
+              <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
+              <p style="margin-bottom: 20px;"><%= @user.user_name %></p>
+            </div>
+          <% end %>
         </div>
-        <hr style="margin-top: 0px; margin-bottom: 0px;">
       </div>
-    <% end %>
-
-    <% if current_user.id != @user.id %>
-      <div class="chat_button col-md-12" style="padding: 20px;">
-        <%= form_for @room do |f| %>
-          <% @friendship = Friendship.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
-          <%= f.hidden_field :friendship_id, :value => @friendship.id %>
-          <%= f.hidden_field :invite_user_id, :value => current_user.id %>
-          <%= f.hidden_field :invited_user_id, :value => @user.id %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, :value => @user.id %>
+      <div class="col-sm-3" style="margin-top: 30px; text-align: center">
+        <% if current_user.id != @user.id %>
+          <div class="chat_button col-xs-10 col-xs-offset-1" style="padding-top: 20px; padding-bottom: 20px;">
+            <%= form_for @room do |f| %>
+              <% @friendship = Friendship.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
+              <%= f.hidden_field :friendship_id, :value => @friendship.id %>
+              <%= f.hidden_field :invite_user_id, :value => current_user.id %>
+              <%= f.hidden_field :invited_user_id, :value => @user.id %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value => @user.id %>
+                <% end %>
+              <%= f.submit "チャット", style:"box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.7); width: 120px;", class:"btn btn-warning" %>
             <% end %>
-          <%= f.submit "チャット", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-warning col-md-12" %>
+          </div>
+          <br>
+          <div class="friend_delete col-xs-10 col-xs-offset-1" style="padding-top: 20px; padding-bottom: 20px;">
+            <%= link_to friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", style:"box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.7); width: 120px;", class:"btn btn-danger col-xs-12" , method: :delete do %>
+              フレンド解消
+            <% end %>
+          </div>
         <% end %>
-      </div>
-      <br>
-      <div class="friend_delete col-md-12" style="padding: 20px; text-align: center;">
-        <%= link_to friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-danger col-md-12" , method: :delete do %>
-          <span class="glyphicon glyphicon-trash"></span> フレンド解消 <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-      </div>
-    <% end %>
 
-    <% if current_user.id == @user.id %>
-      <div class='user_edit col-md-12' style="padding: 20px;">
-        <%= link_to edit_user_path(@user.id), style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-success", method: :get do %>
-          <span class="glyphicon glyphicon-wrench"></span> アカウント編集 <span class="glyphicon glyphicon-wrench"></span>
+        <% if current_user.id == @user.id %>
+          <div class='user_edit col-xs-10 col-xs-offset-1' style="padding: 20px;">
+            <%= link_to edit_user_path(@user.id), style:"box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.7);", class:"btn btn-success", method: :get do %>
+              アカウント編集
+            <% end %>
+          </div>
+          <br>
+          <div class='user_delete col-xs-10 col-xs-offset-1' style="padding: 20px;">
+            <%= link_to user_path(@user.id), "data-confirm" => "本当にアカウントを削除しますか?", style:"box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.7);", class:"btn btn-danger", method: :delete do %>
+              アカウント削除
+            <% end %>
+          </div>
         <% end %>
       </div>
-      <br>
-      <div class='user_delete col-md-12' style="padding: 20px;">
-        <%= link_to user_path(@user.id), "data-confirm" => "本当にアカウントを削除しますか?", style:"box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.7);", class:"btn-lg btn-danger", method: :delete do %>
-          <span class="glyphicon glyphicon-trash"></span> アカウント削除 <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-      </div>
-    <% end %>
+    </div>
   </div>
 
-  <div class="location_and_thing col-md-9" style="padding-left: 80px; padding-right: 0px;" >
+  <div class="location_and_thing row" style="" >
+    <div class="col-xs-12">
     <% if current_user.id == @user.id %>
       <div class="location_and_thing clearfix">
-        <div class="left col-md-6" style="padding: 0px;">
-          <div class="user_location_index col-md-12" style="margin-bottom: 20px;">
-            <div class="thing_title" style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black; font-style: italic;">
+        <div class="left col-sm-6" style="padding: 0px;">
+          <div class="user_location_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
+            <div class="location_title" style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black; font-style: italic;">
               <strong>Locations</strong>
             </div>
             <% @location.each do |location| %>
               <% if location.public_status == "公開する" %>
-                <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
+                <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to location_path(location.id), class:"" do %>
-                    <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                    <div class="location_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                       <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
-                    <div class="location_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                    <div class="location_name col-xs-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= location.location_name %>
                     </div>
-                    <div class="location_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 0px; font-size: 16px; color: black;">
+                    <div class="location_status col-xs-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 0px; font-size: 16px; color: black;">
                       <span style="background-color: red; color: white; border-radius: 5px;">OPEN</span>
                     </div>
                   <% end %>
                 </div>
               <% else %>
-                <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
+                <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to location_path(location.id), class:"" do %>
-                    <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                    <div class="location_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                       <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
-                    <div class="location_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                    <div class="location_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= location.location_name %>
                     </div>
                   <% end %>
@@ -111,33 +113,33 @@
             </div>
           </div>
         </div>
-        <div class="right col-md-6" style="padding: 0px;">
-          <div class="user_thing_index col-md-12" style="margin-bottom: 20px;">
+        <div class="right col-sm-6" style="padding: 0px;">
+          <div class="user_thing_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
             <div class="thing_title" style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black; font-style: italic;">
               <strong>Objects</strong>
             </div>
             <% @thing.each do |thing| %>
               <% if thing.public_status == "公開する" %>
-                <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
+                <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to thing_path(thing.id), class:"" do %>
-                    <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                    <div class="thing_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                       <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
-                    <div class="thing_name col-md-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                    <div class="thing_name col-xs-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= thing.thing_name %>
                     </div>
-                    <div class="thing_status col-md-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 0px; font-size: 16px; color: black;">
+                    <div class="thing_status col-xs-2" style="height: 60px; padding-top: 18px; padding-bottom: 18px; padding-left: 0px; font-size: 16px; color: black;">
                       <span style="background-color: red; color: white; border-radius: 5px;">OPEN</span>
                     </div>
                   <% end %>
                 </div>
               <% else %>
-                <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
+                <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to thing_path(thing.id), class:"" do %>
-                    <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                    <div class="thing_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                       <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
-                    <div class="thing_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                    <div class="thing_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= thing.thing_name %>
                     </div>
                   <% end %>
@@ -152,18 +154,18 @@
       </div>
     <% else %>
       <div class="location_and_thing">
-        <div class="left col-md-6" style="padding: 0px;">
-          <div class="user_location_index col-md-12" style="margin-bottom: 20px;">
+        <div class="left col-sm-6" style="padding: 0px;">
+          <div class="user_location_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
             <div class="thing_title" style="">
               <p style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black; font-style: italic;"><strong>Locations</strong></p>
             </div>
             <% @location_public.each do |location| %>
-              <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
+              <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                 <%= link_to location_path(location.id), class:"" do %>
-                  <div class="location_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                  <div class="location_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                     <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                   </div>
-                  <div class="location_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                  <div class="location_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                     <%= location.location_name %>
                   </div>
                 <% end %>
@@ -174,18 +176,18 @@
             </div>
           </div>
         </div>
-        <div class="right col-md-6" style="padding: 0px;">
-          <div class="user_thing_index col-md-12" style="margin-bottom: 20px;">
+        <div class="right col-sm-6" style="padding: 0px;">
+          <div class="user_thing_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
             <div class="thing_title" style="">
               <p style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black; font-style: italic;"><strong>Objects</strong></p>
             </div>
             <% @thing_public.each do |thing| %>
-              <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
+              <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                 <%= link_to thing_path(thing.id), class:"" do %>
-                  <div class="thing_image col-md-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+                  <div class="thing_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
                     <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
                   </div>
-                  <div class="thing_name col-md-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
+                  <div class="thing_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                     <%= thing.thing_name %>
                   </div>
                 <% end %>
@@ -198,7 +200,30 @@
         </div>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
 
+<style type="text/css">
+.user_profile {
+  width: 700px;
+}
 
+
+
+@media screen and (max-width:768px) {
+  .user_profile {
+  width: 350px;
+  }
+  .user_image {
+    margin-left: 33px;
+    margin-bottom: 20px;
+  }
+  .chat_button {
+    margin-top: 0px;
+  }
+  .friend_delete {
+    margin-left: 65px;
+  }
+}
+</style>

@@ -21,17 +21,10 @@
 
 
 /*********** application.css ***********/
-header {
-  color: white;
-}
-
-header .navbar-left span {
-  padding-top: 10px;
-}
-
-body {
-  margin-top: 50px;
-  padding-bottom: 80px;
+html,body{
+  height: 100%;
+  margin: 0px;
+  padding-top: 70;
   background-image: url("PAK76_chikyuugitobin20130804_TP_V.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,9 +39,27 @@ body {
   clear: both;
 }
 
-footer {
-  background-color: black;
+#pagecover {
+   position: relative;
+   min-height: 100%;
 }
+
+#contents {
+  padding-top: 6em;
+  padding-bottom: 6em; /* フッタの高さ分だけ余白を設ける */
+}
+
+#footer {
+   position: absolute;
+   bottom: 0px;
+   width: 100%;
+}
+
+.nav_footer {
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
+
 
 
 /*********** ページトップへ戻るボタン ***********/
@@ -228,6 +239,20 @@ footer {
 
 
 
+/*********** admins/user/indexページのcss ***********/
+.unsubscribed_index {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+}
+/* マウスオーバー時のカラー */
+.unsubscribed_index:hover {
+  background-color: #ff6347;
+  opacity: 0.8;
+}
+
+
+
+
 /*********** admins/location/indexページのcss ***********/
 .location_index {
   background-color: #f5f5f5;
@@ -329,19 +354,7 @@ footer {
 
 
 /*********** room/showページのcss ***********/
-/* 固定 */
-.chat_list {
-  position: fixed;
-  top: 80px;
-  left: 30px;
-}
 
-/* スクロール */
-div.scr{
-  width: 100%;
-  height: 280px;
-  overflow: scroll;
-}
 
 
 
@@ -386,8 +399,16 @@ div.scr{
 
 
 
+/*********** レスポンシブのcss ***********/
+@media screen and (max-width:768px) {
+  #contents {
+    padding-top: 8em;
+    }
 
-
+  .top {
+    margin-top: 20px;
+    }
+}
 
 
 

@@ -4,83 +4,113 @@
     <title>CLIP</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-    <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: rgba( 10, 10, 10, 0.8 );">
-      <div class="container">
-        <nav class='nav navbar-nav navbar-left' >
-          <h3 style="margin-top: 13px; margin-bottom: 14px;"><span>CLIP</span></h3>
-        </nav>
-          <% if user_signed_in? %>
-            <nav class='nav navbar-nav' >
-              <h4 style="margin-top: 19px; margin-bottom: 14px; margin-left: 50px; color: orange;"><span><%= current_user.user_name %> ID <%= current_user.id %></span></h4>
-            </nav>
-          <% elsif admin_signed_in? %>
-            <nav class='nav navbar-nav' >
-              <h4 style="margin-top: 19px; margin-bottom: 14px; margin-left: 50px; color: red;"><span>管理者　ID <%= current_admin.id %></span></h4>
-            </nav>
-          <% end %>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
+    <div id="pagecover">
+      <div id="header">
+        <header class="navbar navbar-inverse navbar-fixed-top" style="background-color: rgba( 10, 10, 10, 0.8 );">
+          <div class="container">
             <% if user_signed_in? %>
-              <li><%= link_to " マイページ", user_path(current_user.id), class: "nav_menu home" %></li>
-              <li><%= link_to " クリップ", users_clip_path, class: "nav_menu clip" %></li>
-              <li><%= link_to ' フレンド', friendships_path, class: "nav_menu friends" %></li>
-              <li><%= link_to " フレンド追加", new_friendship_path, class: "nav_menu invite" %></li>
-              <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "nav_menu logout" %></li>
+              <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse target">
+                <ul class='nav navbar-nav navbar-left' >
+                    <li><%= link_to "CLIP", user_path(current_user.id), class: "nav_menu home" %></li>
+                    <!-- <li><a  href="#"><%= current_user.user_name %> ID <%= current_user.id %></a></li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to " マイページ", user_path(current_user.id), class: "nav_menu home" %></li>
+                  <li><%= link_to " クリップ", users_clip_path, class: "nav_menu clip" %></li>
+                  <li><%= link_to ' フレンド', friendships_path, class: "nav_menu friends" %></li>
+                  <li><%= link_to " フレンド追加", new_friendship_path, class: "nav_menu invite" %></li>
+                  <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "nav_menu logout" %></li>
+                </ul>
+              </div>
             <% elsif admin_signed_in? %>
-              <li><%= link_to " 管理者トップ", admins_top_path, class: "nav_menu admin" %></li>
-              <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "nav_menu logout" %></li>
+              <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse target">
+                <ul class='nav navbar-nav navbar-left' >
+                    <li><%= link_to "CLIP", admins_top_path, class: "nav_menu home" %></li>
+                    <li><a  href="#">管理者</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to " 管理者トップ", admins_top_path, class: "nav_menu admin" %></li>
+                  <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "nav_menu logout" %></li>
+                </ul>
+              </div>
+
             <% else %>
-              <li><%= link_to " ホーム", root_path, class: "nav_menu home" %></li>
-              <li><%= link_to " アカウント登録", new_user_registration_path, class: "nav_menu sign_up" %></li>
-              <li><%= link_to " ログイン", new_user_session_path, class: "nav_menu sign_in" %></li>
+              <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse target">
+                <ul class='nav navbar-nav navbar-left' >
+                  <li style="font-size: 30px;"><%= link_to "CLIP", root_path, class: "" %></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to " ホーム", root_path, class: "nav_menu home" %></li>
+                  <li><%= link_to " アカウント登録", new_user_registration_path, class: "nav_menu sign_up" %></li>
+                  <li><%= link_to " ログイン", new_user_session_path, class: "nav_menu sign_in" %></li>
+                </ul>
+              </div>
             <% end %>
-          </ul>
-        </nav>
+          </div>
+        </header>
       </div>
-    </header>
-
-
-    <div class='main'>
-      <div class='container'>
-        <div class='row'>
-
-      <% if notice %>
-        <span class="flash alert alert-success col-xs-12"><%= notice %>
-        </span>
-      <% end %>
-      <% if alert %>
-        <span class="flash alert alert-danger col-xs-12"><%= alert %>
-        </span>
-      <% end %>
-
-          <%= yield %>
-          <!-- ページトップへ移動するボタン -->
-          <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
+      <div id="contents">
+        <div class='container'>
+          <div class='row'>
+            <% if notice %>
+              <span class="flash alert alert-success col-xs-12"><%= notice %>
+              </span>
+            <% end %>
+            <% if alert %>
+              <span class="flash alert alert-danger col-xs-12"><%= alert %>
+              </span>
+            <% end %>
+            <%= yield %>
+            <!-- ページトップへ移動するボタン -->
+            <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <footer class="navbar navbar-fixed-bottom navbar-inverse" style="background-color: rgba( 10, 10, 10, 0.8 );">
-      <div class='container'>
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li><%= link_to " 問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
-            <% elsif admin_signed_in? %>
-            <% else %>
-              <li><%= link_to " 問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
-            <% end %>
-          </ul>
-        </nav>
+      <div id="footer">
+        <footer class="nav_footer navbar navbar-inverse" style="background-color: rgba( 10, 10, 10, 0.8 );">
+          <div class='container'>
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? %>
+                  <li><%= link_to " 問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
+                <% elsif admin_signed_in? %>
+                <% else %>
+                  <li><%= link_to " 問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
+        </footer>
       </div>
-    </footer>
-
+   </div>
   </body>
 </html>
