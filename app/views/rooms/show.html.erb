@@ -147,14 +147,14 @@
                   <div class="" style="">
                     <small><strong style="color: orange;"><%= m.user.user_name %></strong></small>
                   </div>
-                  <div class="content" style="">
-                    <small style="line-height: 18px;"><%= simple_format(m.content) %></small>
+                  <div class="content" style="margin-top: 5px;">
+                    <small style="line-height: 18px; color: #000000;"><%= simple_format(m.content) %></small>
                   </div>
                   <div class="" style="float: right;">
                     <small>
-                      <%= m.created_at.strftime("%Y-%m-%d  %H:%M") %>
-                      <strong><%= link_to edit_message_path(m.id), class:"message_#{m.id}" do %>編集<% end %></strong>
-                      <strong><%= link_to message_path(m.id), "data-confirm" => "このメッセージを削除しますか?", method: :delete, class:"delete_message_#{m.id}" do %>削除<% end %></strong>
+                      <span><%= link_to edit_message_path(m.id), class:"message_#{m.id}" do %>編集<% end %></span>
+                      <span style="margin-right: 8px;"><%= link_to message_path(m.id), "data-confirm" => "このメッセージを削除しますか?", method: :delete, class:"delete_message_#{m.id}" do %>削除<% end %></span>
+                      <span style="font-size: 15px;"><%= m.created_at.strftime("%Y-%m-%d  %H:%M") %></span>
                     </small>
                   </div>
                 </div>
@@ -172,11 +172,12 @@
                   <div class="content" style="">
                     <small><strong style="color: blue;"><%= m.user.user_name %></strong></small>
                   </div>
+                  <div class="content" style="margin-top: 5px;">
+                    <small style="line-height: 18px; color: #000000;"><%= simple_format(m.content) %></small>
+                  </div>
                   <div class="" style="float: right;">
                     <small>
-                      <%= m.created_at.strftime("%Y-%m-%d  %H:%M") %>
-                      <strong><%= link_to edit_message_path(m.id), class:"message_#{m.id}" do %>編集<% end %></strong>
-                      <strong><%= link_to message_path(m.id), "data-confirm" => "このメッセージを削除しますか?", method: :delete, class:"delete_message_#{m.id}" do %>削除<% end %></strong>
+                      <span style="font-size: 15px;"><%= m.created_at.strftime("%Y-%m-%d  %H:%M") %></span>
                     </small>
                   </div>
                 </div>
@@ -279,6 +280,9 @@ div.scr{
   .chat_right {
     width: 82%;
     float: left;
+  }
+  .chat_list {
+    padding: 8px;
   }
 }
 </style>

@@ -1,13 +1,15 @@
 
-<div class="well col-md-6 col-md-offset-3" style="margin-top: 100px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
-  <h3 style="text-align: center; margin-bottom: 40px;"><strong>チャットメッセージを編集</strong></h3>
-  <%= form_for @message do |f| %>
-    <%= f.text_area :content, size:"30x10", class:"form-control", placeholder:"1000文字以内でメッセージを入力して下さい" %>
-    <%= f.hidden_field :room_id, value: @message.room_id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <br>
-    <div class="text-center">
-      <%= f.submit "再投稿", :class => "btn btn-primary" %>
-    </div>
-  <% end %>
+<div class="col-xs-12 edit_message_form">
+  <div class="well col-md-6 col-md-offset-3" style="margin-top: 60px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
+    <h3 style="text-align: center; margin-bottom: 40px;"><strong>チャットメッセージ編集</strong></h3>
+    <%= form_for @message do |f| %>
+      <%= f.text_area :content, size:"30x10", class:"form-control", placeholder:"1000文字以内でメッセージを入力して下さい" %>
+      <%= f.hidden_field :room_id, value: @message.room_id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <br>
+      <div class="text-center">
+        <%= f.submit "再投稿", :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
