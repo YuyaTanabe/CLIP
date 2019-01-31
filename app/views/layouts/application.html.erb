@@ -27,8 +27,8 @@
               </div>
               <div class="collapse navbar-collapse target">
                 <ul class='nav navbar-nav navbar-left' >
-                    <li><%= link_to "CLIP", user_path(current_user.id), class: "nav_menu home" %></li>
-                    <!-- <li><a  href="#"><%= current_user.user_name %> ID <%= current_user.id %></a></li> -->
+                  <li><%= image_tag 'clip_logo.png', :size =>"250x50" %></li>
+                  <!-- <li><a  href="#"><%= current_user.user_name %> ID <%= current_user.id %></a></li> -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li><%= link_to " マイページ", user_path(current_user.id), class: "nav_menu home" %></li>
@@ -47,8 +47,7 @@
               </div>
               <div class="collapse navbar-collapse target">
                 <ul class='nav navbar-nav navbar-left' >
-                    <li><%= link_to "CLIP", admins_top_path, class: "nav_menu home" %></li>
-                    <li><a  href="#">管理者</a></li>
+                  <li style="margin-right: 20px;"><%= image_tag 'clip_logo.png', :size =>"250x50" %></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li><%= link_to " 管理者トップ", admins_top_path, class: "nav_menu admin" %></li>
@@ -66,7 +65,7 @@
               </div>
               <div class="collapse navbar-collapse target">
                 <ul class='nav navbar-nav navbar-left' >
-                  <li style="font-size: 30px;"><%= link_to "CLIP", root_path, class: "" %></li>
+                  <li><%= image_tag 'clip_logo.png', :size =>"250x50" %></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li><%= link_to " ホーム", root_path, class: "nav_menu home" %></li>
