@@ -1,15 +1,12 @@
 
-<!-- ページ最下部へ移動するボタン -->
-<p id="pageBottom"><a href="#"><i class="fa fa-chevron-down"></i></a></p>
-
 <div class="admin_thing_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
-  <div class="title" style="font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black;">
+  <div class="title" style="padding-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black;">
     <strong>Objects</strong>
   </div>
   <% @things.each do |thing| %>
     <div class="thing_index" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
       <%= link_to admins_thing_path(thing.id), class:"" do %>
-        <div class="thing_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
+        <div class="thing_image col-xs-2" style="padding-top: 5px; padding-bottom: 5px; padding-left: 15px;">
           <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
         </div>
         <div class="thing_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">

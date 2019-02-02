@@ -43,7 +43,7 @@ var topBtn=$('#pageTop');
   topBtn.hide();
   //◇ボタンの表示設定
   $(window).scroll(function(){
-    if($(this).scrollTop()>80){
+    if($(this).scrollTop()>300){
       //---- 画面を80pxスクロールしたら、ボタンを表示する
       topBtn.fadeIn();
     }else{
@@ -99,10 +99,10 @@ var bottomBtn=$('#pageBottom');
 
 // フラッシュメッセージの消える時間
 $(function(){
-  $(".alert-danger").fadeOut(6000);
+  $(".alert-danger").fadeOut(3000);
 });
 
 $(function(){
-  $(".alert-success").fadeOut(6000);
+  $(".alert-success").fadeOut(3000);
 });
 

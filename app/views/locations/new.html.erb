@@ -2,16 +2,16 @@
 <% if @location.errors.any? %>
   <div id="error_explanation" class="well well-compact col-md-4 col-md-offset-4" >
     <h3><%= @location.errors.count %>件のエラーが発生しました。</h3>
-      <ul>
-        <% @location.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-        <% end %>
-      </ul>
+    <ul>
+      <% @location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
 
 <div class="col-xs-12 clip_location_form">
-  <div class="well well-compact col-md-6 col-md-offset-3" style="margin-top: 30px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
+  <div class="well well-compact col-md-6 col-md-offset-3" style="box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
     <%= form_for @location do |f| %>
       <div class="col-xs-12" style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 1px 1px 1px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black;">
         <strong>Clip location</strong>

@@ -14,42 +14,39 @@
     <div id="pagecover">
       <div id="header">
         <header class="navbar navbar-inverse navbar-fixed-top" style="background-color: rgba( 10, 10, 10, 0.8 );">
-          <div class="container">
+          <!-- <div class="container"> -->
             <% if user_signed_in? %>
               <div class="navbar-header">
+                <%= image_tag 'clip_logo.png',class: "navbar-brand", :size =>"250x50", style:"padding: 0px;" %>
+                <div class="navbar-brand" style="padding: 0; height: 40px;">
+                  <%= attachment_image_tag current_user, :user_image, class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50", style:"margin: 0px 0px 0px 10px; border-radius: 2px;" %>
+                </div>
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                 </button>
               </div>
               <div class="collapse navbar-collapse target">
-                <ul class='nav navbar-nav navbar-left' >
-                  <li><%= image_tag 'clip_logo.png', :size =>"250x50" %></li>
-                  <!-- <li><a  href="#"><%= current_user.user_name %> ID <%= current_user.id %></a></li> -->
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to " マイページ", user_path(current_user.id), class: "nav_menu home" %></li>
-                  <li><%= link_to " クリップ", users_clip_path, class: "nav_menu clip" %></li>
-                  <li><%= link_to ' フレンド', friendships_path, class: "nav_menu friends" %></li>
-                  <li><%= link_to " フレンド追加", new_friendship_path, class: "nav_menu invite" %></li>
-                  <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "nav_menu logout" %></li>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;" >
+                  <li><%= link_to " マイページ", user_path(current_user.id), class: "nav_menu home", style:"" %></li>
+                  <li><%= link_to " クリップ", users_clip_path, class: "nav_menu clip", style:"padding: 15px 10px;" %></li>
+                  <li><%= link_to ' フレンド', friendships_path, class: "nav_menu friends", style:"padding: 15px 10px;" %></li>
+                  <li><%= link_to " フレンド追加", new_friendship_path, class: "nav_menu invite", style:"padding: 15px 10px;" %></li>
+                  <li><%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "nav_menu logout", style:"padding: 15px 10px;" %></li>
                 </ul>
               </div>
             <% elsif admin_signed_in? %>
               <div class="navbar-header">
+                <%= image_tag 'clip_logo.png',class: "navbar-brand", :size =>"250x50", style:"padding: 0px;" %>
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+                   <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
                 </button>
               </div>
               <div class="collapse navbar-collapse target">
-                <ul class='nav navbar-nav navbar-left' >
-                  <li style="margin-right: 20px;"><%= image_tag 'clip_logo.png', :size =>"250x50" %></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
                   <li><%= link_to " 管理者トップ", admins_top_path, class: "nav_menu admin" %></li>
                   <li><%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "nav_menu logout" %></li>
                 </ul>
@@ -57,6 +54,7 @@
 
             <% else %>
               <div class="navbar-header">
+                <%= image_tag 'clip_logo.png',class: "navbar-brand", :size =>"250x50", style:"padding: 0px;" %>
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
                    <span class="icon-bar"></span>
                    <span class="icon-bar"></span>
@@ -64,17 +62,14 @@
                 </button>
               </div>
               <div class="collapse navbar-collapse target">
-                <ul class='nav navbar-nav navbar-left' >
-                  <li><%= image_tag 'clip_logo.png', :size =>"250x50" %></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to " ホーム", root_path, class: "nav_menu home" %></li>
-                  <li><%= link_to " アカウント登録", new_user_registration_path, class: "nav_menu sign_up" %></li>
-                  <li><%= link_to " ログイン", new_user_session_path, class: "nav_menu sign_in" %></li>
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
+                  <li><%= link_to " ホーム", root_path, class: "nav_menu home", style:"padding: 15px 10px;" %></li>
+                  <li><%= link_to " アカウント登録", new_user_registration_path, class: "nav_menu sign_up", style:"padding: 15px 10px;" %></li>
+                  <li><%= link_to " ログイン", new_user_session_path, class: "nav_menu sign_in", style:"padding: 15px 10px;" %></li>
                 </ul>
               </div>
             <% end %>
-          </div>
+          <!-- </div> -->
         </header>
       </div>
       <div id="contents">
@@ -113,3 +108,26 @@
    </div>
   </body>
 </html>
+
+
+
+<style type="text/css">
+.nav_image {
+  padding-top: 0px;
+  padding-left: 10px;
+}
+.nav_menu.home {
+  padding: 15px 15px 15px 0px;
+}
+
+@media screen and (max-width:768px) {
+  .nav_image {
+    margin-top: 0px;
+  }
+  .nav_menu.home {
+  padding: 15px 10px;
+  }
+}
+</style>
+
+

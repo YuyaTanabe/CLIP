@@ -1,6 +1,6 @@
 
 <div class="col-xs-12 edit_message_form">
-  <div class="well col-md-6 col-md-offset-3" style="margin-top: 60px; box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
+  <div class="well col-md-6 col-md-offset-3" style="box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
     <h3 style="text-align: center; margin-bottom: 40px;"><strong>チャットメッセージ編集</strong></h3>
     <%= form_for @message do |f| %>
       <%= f.text_area :content, size:"30x10", class:"form-control", placeholder:"1000文字以内でメッセージを入力して下さい" %>
