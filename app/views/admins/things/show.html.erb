@@ -7,7 +7,7 @@
   <br>
   <div class="thing_info">
     <div class="thing_image col-sm-5" style="padding-left: 30px; padding-bottom: 40px;">
-      <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "250x250" %>
+      <%= attachment_image_tag @thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image_camera_medium.jpg", size: "250x250" %>
     </div>
     <div class="thing_detail col-sm-7" style="margin-top: 0px; margin-bottom: 10px; font-size: 16px;">
       <div class="thing_url col-xs-12" style="padding-top: 0px; word-wrap: break-word;">
@@ -55,6 +55,23 @@
   </div>
 </div>
 
+<% if User.find_by(id: @thing.user_id).present? %>
+  <div class="thing_back" style="text-align: center">
+    <div class='thing_edit col-xs-12' style="margin: 30px auto">
+      <%= link_to admins_user_path(@thing.user_id), style:"box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);", class:"btn-lg btn-default", method: :get do %>
+        ユーザーページに戻る
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="thing_back" style="text-align: center">
+    <div class='thing_back_button col-xs-12' style="margin: 30px auto">
+      <%= link_to unsubscribed_show_user_path(@thing.user_id), style:"box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);", class:"btn-lg btn-default", method: :get do %>
+        ユーザーページに戻る
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 
 <style type="text/css">

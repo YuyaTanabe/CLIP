@@ -7,7 +7,7 @@
   <br>
   <div class="location_info">
     <div class="location_image col-sm-5" style="padding-left: 30px;">
-      <%= attachment_image_tag @location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "250x250" %>
+      <%= attachment_image_tag @location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image_camera_medium.jpg", size: "250x250" %>
     </div>
     <div class="location_detail col-sm-7" style="margin-top: 0px; margin-bottom: 10px; font-size: 16px;">
       <div class="location_url col-xs-12" style="padding-top: 0px; word-wrap: break-word;">
@@ -72,6 +72,14 @@
     </div>
   </div>
 <% end %>
+
+<div class="location_back" style="text-align: center">
+  <div class='location_back_button col-xs-12' style="margin: 30px auto">
+    <%= link_to user_path(@location.user_id), style:"box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);", class:"btn-lg btn-default", method: :get do %>
+      ユーザーページに戻る
+    <% end %>
+  </div>
+</div>
 
 
 <style type="text/css">

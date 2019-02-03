@@ -8,7 +8,7 @@
     <div class="user_friend" style="height: 60px; margin-bottom: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.6);">
       <%= link_to user_path(to_user.id), class:"" do %>
         <div class="friend_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
-          <%= attachment_image_tag to_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50", style:"border-radius: 20px;" %>
+          <%= attachment_image_tag to_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50", style:"border-radius: 20px;" %>
         </div>
         <div class="friend_name col-xs-10" style="padding-top: 15px; padding-bottom: 15px; padding-left: 20px; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
           <%= to_user.user_name %>

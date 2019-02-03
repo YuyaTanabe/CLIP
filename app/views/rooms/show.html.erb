@@ -26,7 +26,7 @@
           <div class="user_friend" style="height: 60px; margin-bottom: 10px; background-color: #b3d9ff;">
             <%= link_to room_path(room.id) do %>
               <div class="friend_image col-xs-2" style="padding-top: 5px; padding-bottom: 5px; padding-left: 15px;">
-                <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+                <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
               </div>
               <div class="friend_name col-xs-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                 <span class="glyphicon glyphicon-user"></span> <%= invited_user.user_name %>
@@ -37,7 +37,7 @@
           <div class="user_friend" style="height: 60px; margin-bottom: 10px;">
             <%= link_to room_path(room.id) do %>
               <div class="friend_image col-xs-2" style="padding-top: 5px; padding-bottom: 5px; padding-left: 15px;">
-                <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+                <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
               </div>
               <div class="friend_name col-xs-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                 <%= invited_user.user_name %>
@@ -52,7 +52,7 @@
           <div class="user_friend" style="height: 60px; margin-bottom: 10px; background-color: #b3d9ff;">
             <%= link_to room_path(room.id) do %>
               <div class="friend_image col-xs-2" style="padding-top: 5px; padding-bottom: 5px; padding-left: 15px;">
-                <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+                <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
               </div>
               <div class="friend_name col-xs-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                 <span class="glyphicon glyphicon-user"></span> <%= invite_user.user_name %>
@@ -63,7 +63,7 @@
           <div class="user_friend" style="height: 60px; margin-bottom: 10px;">
             <%= link_to room_path(room.id) do %>
               <div class="friend_image col-xs-2" style="padding-top: 5px; padding-bottom: 5px; padding-left: 15px;">
-                <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+                <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
               </div>
               <div class="friend_name col-xs-10" style="height: 60px; padding-top: 18px; padding-bottom: 15px; padding-left: 30px; font-size: 18px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                 <%= invite_user.user_name %>
@@ -86,7 +86,7 @@
         <div class="user_friend col-xs-12" style="height: 60px; margin-bottom: 5px; background-color: #b3d9ff; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);">
           <%= link_to user_path(invite_user.id), class:"" do %>
             <div class="friend_image col-xs-2" style="padding-top: 5px; padding-bottom: 5px; padding-left: 15px;">
-              <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+              <%= attachment_image_tag invite_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
             </div>
             <div class="friend_name col-xs-10" style="height: 60px; padding-top: 17px; padding-bottom: 15px; padding-left: 30px; font-size: 20px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
               <span class="glyphicon glyphicon-user"></span> <%= invite_user.user_name %>
@@ -97,7 +97,7 @@
         <div class="user_friend col-xs-12" style="height: 60px; margin-bottom: 5px; background-color: #b3d9ff; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7);">
           <%= link_to user_path(invited_user.id), class:"" do %>
             <div class="friend_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
-              <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+              <%= attachment_image_tag invited_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
             </div>
             <div class="friend_name col-xs-10" style="height: 60px; padding-top: 17px; padding-bottom: 15px; padding-left: 30px; font-size: 20px; color: blue; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
               <span class="glyphicon glyphicon-user"></span> <%= invited_user.user_name %>
@@ -136,7 +136,7 @@
               <div class="text-area alert alert-warning col-xs-12 clearfix" style="word-wrap: break-word; padding: 5px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin-bottom: 10px;">
                 <div class="chat_left" style="">
                   <div class="user_image" style="">
-                    <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+                    <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
                   </div>
                 </div>
                 <div class="chat_right" style="">
@@ -161,7 +161,7 @@
               <div class="text-area alert alert-info col-xs-12 clearfix" style="word-wrap: break-word; padding: 5px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin-bottom: 10px;">
                 <div class="chat_left" style="">
                   <div class="user_image" style="">
-                    <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "50x50" %>
+                    <%= attachment_image_tag m.user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "50x50" %>
                   </div>
                 </div>
                 <div class="chat_right" style="">

@@ -4,7 +4,7 @@
     <div class="user_profile row well well-compact" style="padding: 5px 19px 0px 19px; border-radius: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin: 0 auto;">
       <div class="user_image col-sm-3" style="margin-top: 40px;">
         <div class="col-xs-12" style="padding-left: 0px;">
-          <%= attachment_image_tag @unsubscribed_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size: "150x150", style:"margin-bottom: 40px;" %>
+          <%= attachment_image_tag @unsubscribed_user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "150x150", style:"margin-bottom: 40px;" %>
         </div>
       </div>
       <div class="user_detail col-sm-6" style="margin-top: 20px; font-size: 16px;">
@@ -46,7 +46,7 @@
                 <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to admins_location_path(location.id), class:"" do %>
                     <div class="location_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
-                      <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
+                      <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
                     <div class="location_name col-xs-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= location.location_name %>
@@ -60,7 +60,7 @@
                 <div class="user_location" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to admins_location_path(location.id), class:"" do %>
                     <div class="location_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
-                      <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
+                      <%= attachment_image_tag location, :location_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
                     <div class="location_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= location.location_name %>
@@ -84,7 +84,7 @@
                 <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to admins_thing_path(thing.id), class:"" do %>
                     <div class="thing_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
-                      <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
+                      <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
                     <div class="thing_name col-xs-8" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= thing.thing_name %>
@@ -98,7 +98,7 @@
                 <div class="user_thing" style="height: 60px; margin-bottom: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.6);">
                   <%= link_to admins_thing_path(thing.id), class:"" do %>
                     <div class="thing_image col-xs-2" style="padding-top: 4px; padding-bottom: 4px; padding-left: 20px;">
-                      <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image_camera_medium.jpg", size: "50x50" %>
+                      <%= attachment_image_tag thing, :thing_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image_camera_medium.jpg", size: "50x50" %>
                     </div>
                     <div class="thing_name col-xs-10" style="height: 60px; padding-top: 15px; padding-bottom: 15px; padding-left: 20px; float: left; font-size: 20px; color: black; text-overflow: ellipsis ; overflow: hidden; white-space: nowrap;">
                       <%= thing.thing_name %>
