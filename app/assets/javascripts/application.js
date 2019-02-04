@@ -19,7 +19,7 @@
 
 
 // 背景画像を固定
-$(function(){
+document.addEventListener("turbolinks:load", function(){
   function resize(){
   getHeight = $('body').height();//変数を関数外でも使うのでvarは付けません。
   windowHeight = window.innerHeight;
@@ -38,7 +38,7 @@ $(function(){
 
 
 // page topボタン
-$(function(){
+document.addEventListener("turbolinks:load", function(){
 var topBtn=$('#pageTop');
   topBtn.hide();
   //◇ボタンの表示設定
@@ -61,7 +61,7 @@ var topBtn=$('#pageTop');
 
 
 // ナビバーの文字を変化させる
-$(function(){
+document.addEventListener("turbolinks:load", function(){
   $('.nav_menu').mouseover(function(){
       $(this).css({'color': '#ffa500'});
       $(this).css({'font-size': '20px'});
@@ -76,7 +76,7 @@ $(function(){
 
 
 // page bottomボタン
-$(function(){
+document.addEventListener("turbolinks:load", function(){
 var bottomBtn=$('#pageBottom');
   //◇ボタンの表示設定
   $(window).scroll(function(){
@@ -98,11 +98,11 @@ var bottomBtn=$('#pageBottom');
 
 
 // フラッシュメッセージの消える時間
-$(function(){
+document.addEventListener("turbolinks:load", function(){
   $(".alert-danger").fadeOut(3000);
 });
 
-$(function(){
+document.addEventListener("turbolinks:load", function(){
   $(".alert-success").fadeOut(3000);
 });
 
