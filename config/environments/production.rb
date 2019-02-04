@@ -64,6 +64,20 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "CLIP_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  ########## メール送信に関するエラーをログに出力するよう設定 ##########
+  config.action_mailer.raise_delivery_errors = true
+
+  ########## 追加部分 ##########
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => "gmail.com",
+      :user_name => ENV['GMAIL'],
+      :password => ENV['GMAIL_PASS'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
