@@ -33,7 +33,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
-      t.string :admin_name
+      t.string :name
       t.timestamps null: false
     end
 
