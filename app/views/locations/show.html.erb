@@ -1,6 +1,6 @@
 
 <div class="location_show row well well-compact" style="border-radius: 20px; box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.7);">
-  <div class="field col-xs-12" style="margin-bottom: 20px; font-size: 40px; text-align: center; border-bottom: solid 3px #1c1c80;">
+  <div class="location_name col-xs-12" style="margin-bottom: 20px; text-align: center; border-bottom: solid 3px #1c1c80;">
     <strong><%= @location.location_name %></strong>
   </div>
   <br>
@@ -83,8 +83,11 @@
 
 
 <style type="text/css">
+.location_name {
+  font-size: 40px;
+}
 .location_show {
-  width: 760px;
+  width: 750px;
   margin: 0 auto;
 }
 .location_image {
@@ -92,7 +95,10 @@
   padding-right: 0px;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
+  .location_name {
+    font-size: 22px;
+  }
   .location_show {
     width: 350px;
     margin: 0 auto;

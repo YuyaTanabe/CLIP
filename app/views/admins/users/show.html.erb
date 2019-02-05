@@ -3,7 +3,7 @@
   <div class="row" style="margin-bottom: 30px;">
     <div class="user_profile row well well-compact" style="padding: 5px 19px 0px 19px; border-radius: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin: 0 auto;">
       <div class="user_image col-sm-3" style="margin-top: 40px;">
-        <div class="user_image col-md-12" style="padding-left: 0px;">
+        <div class="col-xs-12" style="padding-left: 0px;">
           <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "150x150", style:"margin-bottom: 40px;" %>
         </div>
       </div>
@@ -129,17 +129,16 @@
 <style type="text/css">
 .user_profile {
   width: 700px;
-  margin: 0 auto;
 }
 
 
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:767px) {
   .user_profile {
-  width: 350px;
+    width: 350px;
   }
   .user_image {
-    margin-left: 23px;
+    margin-left: 33px;
     margin-bottom: 20px;
   }
   .chat_button {

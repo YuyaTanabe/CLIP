@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
       @message.user_id = current_user.id
       if @message.save
         redirect_to room_path(@message.room_id)
+        flash[:notice] = "メッセージを送ました。"
       else
         @room = Room.find_by(id: @message.room_id)
         @messages = @room.messages
@@ -18,7 +19,7 @@ class MessagesController < ApplicationController
     else
       @user = User.find_by(id: current_user.id)
       redirect_to user_path(@user.id)
-      flash[:alert] = "そのチャットルームではメッセージを送れません"
+      flash[:alert] = "そのチャットルームではメッセージを送れません。"
     end
   end
 
@@ -28,7 +29,7 @@ class MessagesController < ApplicationController
     else
       @user = User.find_by(id: current_user.id)
       redirect_to user_path(@user.id)
-      flash[:alert] = "そのチャットルームではメッセージを送れません"
+      flash[:alert] = "そのチャットルームではメッセージを送れません。"
     end
   end
 
@@ -36,10 +37,10 @@ class MessagesController < ApplicationController
     message = Message.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: message.room_id).present?
       message.update(message_params)
-      flash[:notice] = "メッセージを編集しました"
+      flash[:notice] = "メッセージを編集しました。"
       redirect_to room_path(message.room_id)
     else
-      flash[:alert] = "そのページへは行けません"
+      flash[:alert] = "そのページへは行けません。"
       redirect_to user_path(current_user.id)
     end
   end
@@ -47,7 +48,7 @@ class MessagesController < ApplicationController
   def destroy
     message = Message.find(params[:id])
     message.really_destroy!
-    flash[:alert] = "メッセージを削除しました"
+    flash[:alert] = "メッセージを削除しました。"
     redirect_to room_path(message.room_id)
   end
 
