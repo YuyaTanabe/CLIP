@@ -18,10 +18,22 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @l_user = User.find_by(id: @location.user_id)
+    if current_user.is_friend?(@l_user)
+    elsif current_user.id == @l_user.id
+    else
+      flash[:alert] = "そのページへは行けません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def edit
     @location = Location.find(params[:id])
+    if current_user.id == @location.user_id
+    else
+      flash[:alert] = "そのページへは行けません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update

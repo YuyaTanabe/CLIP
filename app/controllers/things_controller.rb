@@ -18,10 +18,22 @@ class ThingsController < ApplicationController
 
   def show
     @thing = Thing.find(params[:id])
+    @t_user = User.find_by(id: @thing.user_id)
+    if current_user.is_friend?(@t_user)
+    elsif current_user.id == @t_user.id
+    else
+      flash[:alert] = "そのページへは行けません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def edit
     @thing = Thing.find(params[:id])
+    if current_user.id == @thing.user_id
+    else
+      flash[:alert] = "そのページへは行けません。"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update

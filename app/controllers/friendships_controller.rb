@@ -45,8 +45,7 @@ class FriendshipsController < ApplicationController
     if Room.where(friendship_id: friendship.id).exists?
       first_room = Room.find_by(friendship_id: friendship.id)
       first_room.really_destroy!
-    else
-      Room.where(friendship_id: friendship_back.id).exists?
+    elsif Room.where(friendship_id: friendship_back.id).exists?
       second_room = Room.find_by(friendship_id: friendship_back.id)
       second_room.really_destroy!
     end
