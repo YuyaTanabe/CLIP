@@ -1,80 +1,78 @@
 
 <div class='user_show' style="padding: 0px;">
-  <div class="row" style="margin-bottom: 30px;">
-    <div class="user_profile row well well-compact" style="padding: 5px 19px 0px 19px; border-radius: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin: 0 auto;">
-      <div class="user_image col-sm-3" style="margin-top: 40px;">
-        <div class="col-xs-12" style="padding-left: 0px;">
-          <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "150x150", style:"margin-bottom: 40px;" %>
-        </div>
+  <div class="user_profile row well well-compact" style="padding: 5px 19px 0px 19px; border-radius: 20px; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.7); margin: 0 auto; margin-bottom: 30px;">
+    <div class="user_image col-sm-3" style="margin-top: 40px;">
+      <div class="col-xs-12" style="padding-left: 0px;">
+        <%= attachment_image_tag @user, :user_image,　format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "/images/no_image.jpg", size: "150x150", style:"margin-bottom: 40px;" %>
       </div>
-      <div class="user_detail col-sm-6" style="margin-top: 20px; font-size: 16px;">
-        <div class="user_name" style="">
-          <% if current_user.id == @user.id %>
-            <div class="user_name col-xs-12" style="">
-              <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
-              <p style="margin-bottom: 20px;"><%= @user.user_name %></p>
-            </div>
-            <div class="email col-xs-12" style="">
-              <p style="margin-bottom: 4px;"><strong>・Eメールアドレス</strong></p>
-              <p style="margin-bottom: 20px;"><%= @user.email %></p>
-            </div>
-            <div class="friend_id col-xs-12" style="">
-              <p style="margin-bottom: 4px;"><strong>・フレンドID</strong></p>
-              <p style="margin-bottom: 10px;"><%= @user.friend_id %></p>
-            </div>
-          <% else %>
-            <div class="friend_name col-xs-12" style="">
-              <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
-              <p style="margin-bottom: 20px;"><%= @user.user_name %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3" style="text-align: center">
-        <% if current_user.id != @user.id %>
-          <div class="chat_button col-xs-10 col-xs-offset-1" style="">
-            <%= form_for @room do |f| %>
-              <% @friendship = Friendship.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
-              <%= f.hidden_field :friendship_id, :value => @friendship.id %>
-              <%= f.hidden_field :invite_user_id, :value => current_user.id %>
-              <%= f.hidden_field :invited_user_id, :value => @user.id %>
-                <%= fields_for @entry do |e| %>
-                  <%= e.hidden_field :user_id, :value => @user.id %>
-                <% end %>
-              <%= f.submit "チャット", style:"width: 120px;", class:"btn btn-warning" %>
-            <% end %>
-          </div>
-          <br>
-          <div class="friend_delete col-xs-10 col-xs-offset-1" style="">
-            <%= link_to friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", style:"width: 120px;", class:"btn btn-danger col-xs-12" , method: :delete do %>
-              フレンド解消
-            <% end %>
-          </div>
-        <% end %>
-
+    </div>
+    <div class="user_detail col-sm-6" style="margin-top: 20px; font-size: 16px;">
+      <div class="user_name" style="">
         <% if current_user.id == @user.id %>
-          <div class='user_edit col-xs-10 col-xs-offset-1' style="padding: 10px; margin-top: 10px; ">
-            <%= link_to edit_user_path(@user.id), class:"btn btn-success", method: :get do %>
-              アカウント編集
-            <% end %>
+          <div class="user_name col-xs-12" style="">
+            <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
+            <p style="margin-bottom: 20px;"><%= @user.user_name %></p>
           </div>
-          <br>
-          <div class='user_delete col-xs-10 col-xs-offset-1' style="padding: 10px; margin-bottom: 10px;">
-            <%= link_to user_path(@user.id), "data-confirm" => "本当にアカウントを削除しますか?", class:"btn btn-danger", method: :delete do %>
-              アカウント削除
-            <% end %>
+          <div class="email col-xs-12" style="">
+            <p style="margin-bottom: 4px;"><strong>・Eメールアドレス</strong></p>
+            <p style="margin-bottom: 20px;"><%= @user.email %></p>
+          </div>
+          <div class="friend_id col-xs-12" style="">
+            <p style="margin-bottom: 4px;"><strong>・フレンドID</strong></p>
+            <p style="margin-bottom: 10px;"><%= @user.friend_id %></p>
+          </div>
+        <% else %>
+          <div class="friend_name col-xs-12" style="">
+            <p style="margin-bottom: 4px;"><strong>・ユーザー名</strong></p>
+            <p style="margin-bottom: 20px;"><%= @user.user_name %></p>
           </div>
         <% end %>
       </div>
     </div>
+    <div class="col-sm-3" style="text-align: center">
+      <% if current_user.id != @user.id %>
+        <div class="chat_button col-xs-10 col-xs-offset-1" style="">
+          <%= form_for @room do |f| %>
+            <% @friendship = Friendship.find_by(from_user_id: current_user.id, to_user_id: @user.id) %>
+            <%= f.hidden_field :friendship_id, :value => @friendship.id %>
+            <%= f.hidden_field :invite_user_id, :value => current_user.id %>
+            <%= f.hidden_field :invited_user_id, :value => @user.id %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, :value => @user.id %>
+              <% end %>
+            <%= f.submit "チャット", style:"width: 120px;", class:"btn btn-warning" %>
+          <% end %>
+        </div>
+        <br>
+        <div class="friend_delete col-xs-10 col-xs-offset-1" style="">
+          <%= link_to friendship_path(@friendship.id), "data-confirm" => "本当にフレンド関係を解消しますか?", style:"width: 120px;", class:"btn btn-danger col-xs-12" , method: :delete do %>
+            フレンド解消
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if current_user.id == @user.id %>
+        <div class='user_edit col-xs-10 col-xs-offset-1' style="padding: 10px; margin-top: 10px; ">
+          <%= link_to edit_user_path(@user.id), class:"btn btn-success", method: :get do %>
+            アカウント編集
+          <% end %>
+        </div>
+        <br>
+        <div class='user_delete col-xs-10 col-xs-offset-1' style="padding: 10px; margin-bottom: 10px;">
+          <%= link_to user_path(@user.id), "data-confirm" => "本当にアカウントを削除しますか?", class:"btn btn-danger", method: :delete do %>
+            アカウント削除
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="location_and_thing row" style="" >
-    <div class="col-xs-12">
+  <div class="location_and_thing_all row">
+    <div class="col-xs-12" style="padding: 0px;" >
     <% if current_user.id == @user.id %>
-      <div class="location_and_thing clearfix">
+      <div class="location_and_thing">
         <div class="left col-sm-6" style="padding: 0px;">
-          <div class="user_location_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
+          <div class="user_location_index" style="margin-bottom: 20px;">
             <div class="location_title" style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black;">
               <strong>Locations</strong>
             </div>
@@ -112,7 +110,7 @@
           </div>
         </div>
         <div class="right col-sm-6" style="padding: 0px;">
-          <div class="user_thing_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
+          <div class="user_thing_index" style="margin-bottom: 20px;">
             <div class="thing_title" style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black;">
               <strong>Objects</strong>
             </div>
@@ -153,7 +151,7 @@
     <% else %>
       <div class="location_and_thing">
         <div class="left col-sm-6" style="padding: 0px;">
-          <div class="user_location_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
+          <div class="user_location_index" style="margin-bottom: 20px;">
             <div class="thing_title" style="">
               <p style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #00bfff; -webkit-text-stroke: 0.2px black;"><strong>Locations</strong></p>
             </div>
@@ -175,7 +173,7 @@
           </div>
         </div>
         <div class="right col-sm-6" style="padding: 0px;">
-          <div class="user_thing_index" style="margin-bottom: 20px; width: 350px; margin: 0 auto;">
+          <div class="user_thing_index" style="margin-bottom: 20px;">
             <div class="thing_title" style="">
               <p style="margin-bottom: 10px; font-size: 40px; text-align: center; text-shadow: 4px 4px 4px #000000; color: #ffd700; -webkit-text-stroke: 0.2px black;"><strong>Objects</strong></p>
             </div>
@@ -217,18 +215,32 @@
   padding: 10px;
   margin-bottom: 10px;
 }
-
+.location_and_thing_all {
+  margin: 0 auto;
+}
+.user_location_index {
+  width: 350px;
+  margin: 0 auto;
+}
+.user_thing_index {
+  width: 350px;
+  margin: 0 auto;
+}
 
 @media screen and (max-width:767px) {
+  .user_show {
+    width: 350px;
+    margin: 0 auto;
+  }
   .user_profile {
-  width: 350px;
+    width: 350px;
   }
   .user_image {
     margin-left: 33px;
     margin-bottom: 20px;
   }
   .friend_name {
-  margin-top: 0px;
+    margin-top: 0px;
   }
   .chat_button {
     margin-top: 0px;
@@ -238,4 +250,14 @@
     margin-left: 70px;
   }
 }
+
+@media screen and (max-width:375px) {
+  .location_and_thing_all {
+    width: 350px;
+    margin: 0 auto;
+  }
+
 </style>
+
+
+
