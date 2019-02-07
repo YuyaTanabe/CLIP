@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'guide/guide'
   devise_for :admins, controllers: {
     sessions:      "admins/sessions",
     passwords:     "admins/paswwords",
@@ -28,8 +29,6 @@ Rails.application.routes.draw do
   get 'admins/users/:id/unsubscribed_show/' => 'admins/users#unsubscribed_show', as: 'unsubscribed_show_user'
   patch 'admins/users/:id/revive' => 'admins/users#revive_account', as: 'revive_account_user'
 
-
-
   get 'users/clip'
   resources :users, only: [:create, :show, :edit, :update, :destroy]
 
@@ -46,6 +45,8 @@ Rails.application.routes.draw do
   get  'inquiries/index' =>'inquiries#index'
   post 'inquiries/confirm' => 'inquiries#confirm'
   post 'inquiries/done' => 'inquiries#done'
+
+  get  'top/guide' =>'top#guide'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

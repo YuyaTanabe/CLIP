@@ -103,12 +103,14 @@
         <footer class="nav_footer navbar navbar-inverse" style="background-color: rgba( 10, 10, 10, 0.8 ); border: none;">
           <div class='container'>
             <nav>
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="fnr nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
-                  <li><%= link_to " 問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
+                  <li><%= link_to "ご利用ガイド", top_guide_path, class: "nav_menu guide" %></li>
+                  <li><%= link_to "お問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
                 <% elsif admin_signed_in? %>
                 <% else %>
-                  <li><%= link_to " 問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
+                  <li><%= link_to "ご利用ガイド", top_guide_path, class: "nav_menu guide" %></li>
+                  <li><%= link_to "お問い合わせ", inquiries_index_path, class: "nav_menu inquiry" %></li>
                 <% end %>
               </ul>
             </nav>
@@ -136,6 +138,17 @@
   }
   .nav_menu.home {
     padding: 15px 10px;
+  }
+  .fnr {
+    display: flex;
+    text-align: center;
+  }
+  .fnr li {
+    flex: 1;
+  }
+  .fnr a {
+    display: flex;
+    height: 100%;
   }
 }
 

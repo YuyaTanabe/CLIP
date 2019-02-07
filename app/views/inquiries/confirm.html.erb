@@ -2,7 +2,7 @@
 <div class="inquiry_confirm col-md-6 col-md-offset-3">
   <%= form_for @inquiry, :url => inquiries_done_path do |f| %>
     <div class="well well-compact col-md-12" style="box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.7); background-color: rgba( 245, 245, 245, 0.8 );">
-      <div class="confirm_title" style="margin-top: 5px; text-align: center; margin-bottom: 20px;"><strong>問い合わせフォーム 内容確認</strong></div>
+      <div class="confirm_title" style="margin-top: 5px; text-align: center; margin-bottom: 20px;"><strong>お問い合わせフォーム 内容確認</strong></div>
       <div>
         <div>
           <strong>・お名前</strong>
@@ -21,7 +21,7 @@
         </div>
         <br>
         <div>
-          <strong>・問い合わせ内容</strong>
+          <strong>・お問い合わせ内容</strong>
           <p>
             <%= f.hidden_field :content %>
             <div class="well well-compact" style="background-color: #ffffff">
@@ -50,7 +50,7 @@
 
 @media screen and (max-width:424px) {
   .confirm_title {
-    font-size: 21px;
+    font-size: 20px;
   }
 }
 
