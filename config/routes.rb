@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'guide/guide'
   devise_for :admins, controllers: {
     sessions:      "admins/sessions",
     passwords:     "admins/paswwords",
@@ -46,7 +45,7 @@ Rails.application.routes.draw do
   post 'inquiries/confirm' => 'inquiries#confirm'
   post 'inquiries/done' => 'inquiries#done'
 
-  get  'top/guide' =>'top#guide'
+  get 'top/guide' =>'top#guide'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
